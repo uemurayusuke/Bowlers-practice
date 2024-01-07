@@ -1,24 +1,25 @@
 class Public::SessionsController < Devise::SessionsController
+before_action :user_state, only: [:create]
 
 def after_sign_in_path_for(resource)
-  #ログインしたら、マイページに遷移。
+  #ログインしたら、マイページに遷移
 end
 
 def after_sign_out_path_for(resource)
-  #ログアウトしたら、ログイン画面に遷移。
+  #ログアウトしたら、ログイン画面に遷移
 end
 
-# private
+private
 
-# def customer_state
-#   customer = Customer.find_by(email: params[:customer][:email])
-#   return if customer.nil?
-#   if customer.is_active
-#     return unless customer.valid_password?(params[:customer][:password])
-#   else
-#     redirect_to  new_customer_registration_path
-#   end
-# end
-
+def user_state
+  user = User.find_by(email: params[:user][:email])
+  return if user.nil?
+  if user.is_active
+    return unless user.valid_password?(params[:user][:password])
+  else
+    redirect_to  new_user_registration_path
+    #リンク先を見直す
+  end
+end
 
 end
