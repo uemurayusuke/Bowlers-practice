@@ -10,6 +10,28 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+   <!--長野ケーキ参考-->
+   <!--リンク先後で指定-->
+  <header>
+          </div>
+            <% if admin_signed_in? %>
+            <div>
+                <!--<button><%= link_to '会員一覧', admin_customers_path %></button>-->
+                <button><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></button>
+              </div>
+
+             <div>
+            <% elsif user_signed_in? %>
+                <!--<button><%= link_to 'マイページ', my_page_customers_path%></button>-->
+                <!--<button><%= link_to '投稿一覧', items_path %></button>-->
+                <!--<button><%= link_to 'ユーザ一覧', cart_items_path %></button>-->
+                <button><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></button>
+                </div>
+            <% end %>
+    </header>
+
+
+<!--元々の記述-->
   <body>
     <%= yield %>
   </body>
