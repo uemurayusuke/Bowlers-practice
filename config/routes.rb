@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  # root to: 'public/homes#top'
+  devise_scope :user do
+  root to: 'public/sessions#new'
+  end
   # コントローラとアクションは後で確認する
 
   devise_for :users, controllers: {
@@ -11,5 +13,4 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-
 end

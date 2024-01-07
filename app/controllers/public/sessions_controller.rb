@@ -2,10 +2,12 @@ class Public::SessionsController < Devise::SessionsController
 before_action :user_state, only: [:create]
 
 def after_sign_in_path_for(resource)
+  root_path
   #ログインしたら、マイページに遷移
 end
 
 def after_sign_out_path_for(resource)
+  root_path
   #ログアウトしたら、ログイン画面に遷移
 end
 
