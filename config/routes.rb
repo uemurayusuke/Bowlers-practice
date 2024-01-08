@@ -15,7 +15,12 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-#ユーザー関係
+#管理者側
+namespace :admin do
+  resources :users, only:[:index, :show, :edit, :update]
+  end
+
+#ユーザー側
    scope module: :public do
     resources :users, only: [:show, :edit, :update, :destroy] do
       collection do
@@ -27,3 +32,6 @@ Rails.application.routes.draw do
     end
   end
 end
+
+
+#管理者側とユーザー側を入れ替えたら、ルーティングエラーが無くなった。なぜ？
