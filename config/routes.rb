@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'relationships/create'
+  get 'relationships/destroy'
   get 'post_comments/create'
   get 'post_comments/destroy'
   namespace :public do
