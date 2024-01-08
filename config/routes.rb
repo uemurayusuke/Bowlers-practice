@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'post_comments/create'
+  get 'post_comments/destroy'
   namespace :public do
     get 'favorites/destroy'
     get 'favorites/create'
@@ -27,6 +29,7 @@ namespace :admin do
 #ユーザー側
    scope module: :public do
     resource :favorite, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
     resources :users, only: [:show, :edit, :update, :destroy] do
       collection do
         get :unsubscribe
