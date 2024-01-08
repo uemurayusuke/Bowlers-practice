@@ -1,20 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'posts/new'
-    get 'posts/create'
-    get 'posts/index'
-    get 'posts/destroy'
-    get 'posts/show'
-  end
-  get 'relationships/create'
-  get 'relationships/destroy'
-  get 'post_comments/create'
-  get 'post_comments/destroy'
-  namespace :public do
-    get 'favorites/destroy'
-    get 'favorites/create'
-  end
   #ユーザー認証関係
   devise_scope :user do
   root to: 'public/sessions#new'
@@ -37,8 +22,10 @@ namespace :admin do
 
 #ユーザー側
    scope module: :public do
+    resources :posts, only: [:new, :create, :index, :destroy, :show]
     resource :favorite, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
+    resource :relationships, only: [:create, :destroy]
     resources :users, only: [:show, :edit, :update, :destroy] do
       collection do
         get :unsubscribe
