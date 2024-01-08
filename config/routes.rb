@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'favorites/destroy'
+    get 'favorites/create'
+  end
   #ユーザー認証関係
   devise_scope :user do
   root to: 'public/sessions#new'
@@ -22,6 +26,7 @@ namespace :admin do
 
 #ユーザー側
    scope module: :public do
+    resource :favorite, only: [:create, :destroy]
     resources :users, only: [:show, :edit, :update, :destroy] do
       collection do
         get :unsubscribe
