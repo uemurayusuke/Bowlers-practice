@@ -26,7 +26,7 @@ namespace :admin do
     resource :favorite, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
     resource :relationships, only: [:create, :destroy]
-    resources :users, only: [:show, :edit, :update, :destroy] do
+    resources :users, only: [:show, :edit, :update, :destroy, :index] do
       collection do
         get :unsubscribe
         #ユーザーの退会確認画面

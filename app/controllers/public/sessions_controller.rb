@@ -3,7 +3,7 @@ before_action :user_state, only: [:create]
 
 def after_sign_in_path_for(resource)
   user_path(current_user)
-  #ログインしたら、マイページに遷移
+  #ログインしたら、ユーザー詳細(ログインしているユーザー)に遷移
 end
 
 def after_sign_out_path_for(resource)
