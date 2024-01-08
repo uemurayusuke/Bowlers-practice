@@ -1,2 +1,19 @@
 <h1>新規投稿画面</h1>
 
+<%= form_with model: @post, url:posts_path do |f| %>
+
+<div>
+<%= f.label :投稿内容 %>
+<%= f.text_area :introduction ,placeholder: "投稿内容"%>
+</div>
+
+<div>
+  <%= f.label :投稿画像 %>
+  <%= f.file_field :item_image, accept: "image/*" %>
+</div>
+
+<div>
+<%=f.submit "投稿する" %>
+</div>
+
+<% end %>
