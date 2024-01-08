@@ -15,14 +15,15 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
-#会員関係
-namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
+#ユーザー関係
+   scope module: :public do
+    resources :users, only: [:show, :edit, :update, :destroy] do
+      collection do
+        get :unsubscribe
+        #ユーザーの退会確認画面
+        patch :withdraw
+        #ユーザーの退会処理(ステータス更新)
+      end
+    end
   end
-
-
 end
