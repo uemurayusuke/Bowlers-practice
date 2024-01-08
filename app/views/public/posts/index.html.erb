@@ -1,10 +1,11 @@
 <h1>投稿一覧</h1>
 
   <% @posts.each do |post| %>
-    <%= link_to(book.user) do %>
-    <%= image_tag post.user.get_profile_image, size:'50x50' %>
+    <%= link_to(post.user) do %>
+    <%= image_tag post.user.get_profile_image(50,50) %>
     <% end %>
     <%= post.caption %>
-     <%= image_tag post.user.get_profile_image, size:'50x50' %>
+    <%= image_tag post.get_post_image(50,50) %>
+    
     <% end %>
 
