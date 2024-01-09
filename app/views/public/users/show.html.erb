@@ -6,10 +6,10 @@
 <%= link_to "プロフィール編集", edit_user_path(current_user) %>
 
 <p>follows</p>
-  <%= link_to @user.followings.count, followings_users_path %>
+  <%= link_to @user.followings.count, user_followings_path(@user) %>
 
 <p>followers</p>
-  <%= link_to @user.followers.count, followers_users_path %>
+  <%= link_to @user.followers.count, user_followers_path(@user) %>
 
 <% @posts.each do |post| %>
     <%= post.caption %>
