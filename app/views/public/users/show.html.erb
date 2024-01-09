@@ -1,3 +1,24 @@
 </h1>ユーザ詳細画面</h1>
 
- <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+<%= image_tag @user.get_profile_image(50,50) %>
+<%= @user.user_name %>
+<%= link_to "プロフィール編集", edit_user_path(current_user) %>
+
+<% @posts.each do |post| %>
+    <%= post.caption %>
+    <%= image_tag post.get_post_image(400,400)%>
+    <%= link_to "投稿詳細", post_path(post) %>
+<% end %>
+
+
+
+ <!--ユーザー詳細画面に何を載せるか？-->
+ <!--プロフ写真-->
+ <!--ユーザー名-->
+ <!--投稿件数表示-->
+ <!--フォロー数-->
+ <!--フォロワー数-->
+ <!--自己紹介文-->
+ <!--自分が今まで投稿した投稿を新しい順で表示する-->
+ <!--フォローする・しないボタン(フォロー機能)※他人だけ表示-->
+ <!--メッセージ送信ボタン(DM機能)※他人だけ表示-->

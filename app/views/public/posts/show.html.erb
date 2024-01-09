@@ -1,5 +1,14 @@
 <h1>投稿詳細</h1>
 
+
+    <%= link_to(@post.user) do %>
+    <%= image_tag @post.user.get_profile_image(50,50)%>
+    <% end %>
+    <%= @post.user.user_name %>
+    <%= @post.caption %>
+    <%= image_tag @post.get_post_image(400,400)%>
+
+
 <% if @post.favorited_by?(current_user) %>
     <p>
       <%= link_to post_favorite_path(@post), method: :delete do %>
@@ -13,3 +22,12 @@
       <% end %>
     </p>
   <% end %>
+
+
+<!--投稿詳細に何を載せるか？-->
+<!--投稿画像-->
+<!--投稿した人のプロフ-->
+<!--ユーザー名-->
+<!--投稿内容-->
+<!--いいね-->
+<!--コメント-->
