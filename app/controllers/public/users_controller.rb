@@ -17,9 +17,9 @@ class Public::UsersController < ApplicationController
      if @user.update(user_params)
       redirect_to user_path(@user)
       #ユーザー詳細ページへ
-    else
+     else
       render "edit"
-    end
+     end
   end
 
   def unsubscribe
