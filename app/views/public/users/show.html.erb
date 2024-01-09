@@ -2,7 +2,14 @@
 
 <%= image_tag @user.get_profile_image(50,50) %>
 <%= @user.user_name %>
+<%= @user.introduction %>
 <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+
+<p>follows</p>
+  <%= link_to @user.followings.count, followings_users_path %>
+
+<p>followers</p>
+  <%= link_to @user.followers.count, followers_users_path %>
 
 <% @posts.each do |post| %>
     <%= post.caption %>

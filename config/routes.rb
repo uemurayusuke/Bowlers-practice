@@ -28,12 +28,14 @@ namespace :admin do
     end
 
     resources :users, only: [:show, :edit, :update, :destroy, :index] do
-      # resource :relationships, only: [:create, :destroy]
+      resource :relationships, only: [:create, :destroy]
       collection do
         get :unsubscribe
         #ユーザーの退会確認画面
         patch :withdraw
         #ユーザーの退会処理(ステータス更新)
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
       end
     end
   end
