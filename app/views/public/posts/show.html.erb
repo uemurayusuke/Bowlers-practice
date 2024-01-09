@@ -8,6 +8,8 @@
     <%= @post.caption %>
     <%= image_tag @post.get_post_image(400,400)%>
 
+    <%= link_to "削除", post_path(@post), method: :delete %>
+
 
 <% if @post.favorited_by?(current_user) %>
     <p>
@@ -49,3 +51,4 @@
 <!--投稿内容-->
 <!--いいね-->
 <!--コメント-->
+<!--投稿削除-->
