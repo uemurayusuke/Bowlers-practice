@@ -1,4 +1,4 @@
-class PostCommentsController < ApplicationController
+class Public::PostCommentsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
@@ -6,12 +6,18 @@ class PostCommentsController < ApplicationController
     comment.post_id = post.id
     comment.save
     redirect_to post_path(post)
-#投稿詳細へリダイレクト
+    #投稿詳細へリダイレクト
+    # redirect_to request.referer
+    #直前のページへリダイレクト
+
   end
 
   def destroy
     PostComment.find(params[:id]).destroy
     redirect_to post_path(params[:post_id])
+    #投稿詳細へリダイレクト
+    # redirect_to request.referer
+    #直前のページへリダイレクト
   end
 
 

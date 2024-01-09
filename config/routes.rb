@@ -23,8 +23,8 @@ namespace :admin do
 #ユーザー側
    scope module: :public do
     resources :posts, only: [:new, :create, :index, :destroy, :show] do
-      resources :post_comments, only: [:create, :destroy]
-      resource :favorite, only: [:create, :destroy]
+     resources :post_comments, only: [:create, :destroy]
+     resource :favorite, only: [:create, :destroy]
     end
 
     resources :users, only: [:show, :edit, :update, :destroy, :index] do
