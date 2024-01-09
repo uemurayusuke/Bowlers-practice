@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
   if @post.save
-    redirect_to user_path(@post)
+    redirect_to user_path(current_user)
     #投稿したユーザー詳細画面に飛ぶ
   else
     render :new
