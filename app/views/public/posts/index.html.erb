@@ -2,10 +2,20 @@
 
   <% @posts.each do |post| %>
     <%= link_to(post.user) do %>
-    <%= image_tag post.user.get_profile_image(50,50) %>
+    <%= image_tag post.user.get_profile_image(50,50)%>
     <% end %>
     <%= post.caption %>
-    <%= image_tag post.get_post_image(50,50) %>
-    
+    <%= image_tag post.get_post_image(400,400)%>
+
     <% end %>
 
+
+
+<!--<% @posts.each do |post| %>-->
+<!--    <%= link_to(post.user) do %>-->
+<!--    <%= image_tag post.user.profile_image, size: "200x200" %>-->
+<!--    <% end %>-->
+<!--    <%= post.caption %>-->
+<!--    <%= image_tag post.post_image, size: "200x200" %>-->
+
+<!--<% end %>-->
