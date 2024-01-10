@@ -1,2 +1,16 @@
-<h1>Public::Chats#show</h1>
-<p>Find me in app/views/public/chats/show.html.erb</p>
+<h1>チャットルーム</h1>
+
+<div>
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+     <%= chat.message %>
+    <% else %>
+      <%= chat.message %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_with model: @chat, data: {remote: true} do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+<% end %>

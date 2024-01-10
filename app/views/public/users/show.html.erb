@@ -28,6 +28,9 @@
     <%= link_to "プロフィール編集", edit_user_path(current_user) %>
   <% end %>
 
+<% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+    <%= link_to 'chatを始める', chat_path(@user.id) %>
+<% end %>
 
  <!--ユーザー詳細画面に何を載せるか？-->
  <!--プロフ写真-->
