@@ -39,6 +39,7 @@ namespace :admin do
 
       end
     end
+    resources :chats, only: [:show, :create]
   end
 end
 
