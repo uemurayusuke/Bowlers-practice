@@ -1,7 +1,7 @@
 class Admin::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
-    users_path
+    admin_users_path
     #会員一覧画面に遷移する
   end
 
