@@ -7,3 +7,5 @@ class Chat < ApplicationRecord
   #:messageはchatテーブルにあるmessageカラムです。
 
 end
+
+#chatがmessage
