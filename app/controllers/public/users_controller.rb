@@ -32,7 +32,6 @@ class Public::UsersController < ApplicationController
     user.update(is_active: false)
     sign_out(user)
     redirect_to root_path
-    root_path
   end
 
   def user_params
