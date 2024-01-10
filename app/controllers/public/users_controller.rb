@@ -28,6 +28,11 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
+    user = current_user
+    user.update(is_active: false)
+    sign_out(user)
+    redirect_to root_path
+    root_path
   end
 
   def user_params

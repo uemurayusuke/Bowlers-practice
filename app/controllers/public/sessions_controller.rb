@@ -20,7 +20,7 @@ def user_state
     return unless user.valid_password?(params[:user][:password])
   else
     redirect_to  new_user_registration_path
-    #リンク先を見直す
+    #新規登録画面へリダイレクト
   end
 end
 
