@@ -8,6 +8,17 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+// 新たに記述
+import jQuery from "jquery"
+import "popper.js"
+import "bootstrap"
+import "../stylesheets/application"
+
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// 新たに記述
+global.$ = jQuery;
+window.$ = jQuery;
