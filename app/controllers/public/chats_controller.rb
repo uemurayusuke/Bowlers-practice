@@ -17,11 +17,14 @@ class Public::ChatsController < ApplicationController
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
     @chats = @room.chats
-    @chat = Chat.new(room_id: @room.id)
+     @chat = Chat.new(room_id: @room.id)
   end
+
   def create
     @chat = current_user.chats.new(chat_params)
-    render :validater unless @chat.save
+   @chat.save
+  # redirect_to chat_path(@chat.room_id)
+  redirect_to request.referer
   end
 
   private
