@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'searches/search'
   #ユーザー認証関係
   devise_scope :user do
   root to: 'public/sessions#new'
