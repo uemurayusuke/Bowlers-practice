@@ -1,12 +1,12 @@
 <h1>チャットルーム</h1>
 
 
-<div>
-  <% @chats.each do |chat| %>
+<div class="message" style="width: 400px;">
+   <% @chats.each do |chat| %>
     <% if chat.user_id == current_user.id %>
-      <p><%= chat.message %></p>
+      <p style="text-align: right;"><%= chat.message %></p>
     <% else %>
-      <p><%= chat.message %></p>
+      <p style="text-align: left;"><%= chat.message %></p>
     <% end %>
   <% end %>
 </div>
