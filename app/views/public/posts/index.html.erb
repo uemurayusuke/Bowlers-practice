@@ -6,7 +6,10 @@
     <% end %>
     <%= post.user.user_name %>
     <%= post.caption %>
-    <%= image_tag post.get_post_image(400,400)%>
+   <% if post.post_image.attached? %>
+    　<%= image_tag post.get_post_image(400,400)%>
+     <% else %>
+     <% end %>
     <%= link_to "投稿詳細", post_path(post) %>
     <% end %>
 
