@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 #管理者側
 namespace :admin do
   resources :users, only:[:index, :show, :edit, :update]
+  resources :posts, only:[:index, :show, :destroy]
   end
 
 #ユーザー側

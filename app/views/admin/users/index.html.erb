@@ -3,9 +3,10 @@
 <% @users.each do |user| %>
   <%= image_tag user.get_profile_image(50,50) %>
   <%= user.user_name %>
-
   フォロー数: <%= user.followings.count %>
   フォロワー数: <%= user.followers.count %>
+  <%= link_to "プロフィールへ", admin_user_path(user) %>
+  <%= user.is_active ? "有効" : "退会" %>
 <% end %>
 
 
