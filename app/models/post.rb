@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
 
+has_one_attached :post_image
 
   belongs_to :user
-  has_one_attached :post_image
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 
@@ -19,11 +19,9 @@ end
  def self.search_for(content, method)
     if method == 'perfect'
       Post.where(caption: content)
-   elsif method == 'partial'
+    elsif method == 'partial'
       Post.where('caption LIKE ?', '%'+content+'%')
     end
  end
-
-
 
 end
