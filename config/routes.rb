@@ -36,14 +36,12 @@ namespace :admin do
         #ユーザーの退会確認画面
         patch :withdraw
         #ユーザーの退会処理(ステータス更新)
-
       end
     end
+    get '/search', to: 'searches#search'
     resources :chats, only: [:show, :create]
   end
 end
-
-get 'searches/search'
 
 
 #管理者側とユーザー側を入れ替えたら、ルーティングエラーが無くなった。なぜ？
