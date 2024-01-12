@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'searches/search'
   #ユーザー認証関係
   devise_scope :user do
   root to: 'public/sessions#new'
@@ -43,6 +42,8 @@ namespace :admin do
     resources :chats, only: [:show, :create]
   end
 end
+
+get 'searches/search'
 
 
 #管理者側とユーザー側を入れ替えたら、ルーティングエラーが無くなった。なぜ？
