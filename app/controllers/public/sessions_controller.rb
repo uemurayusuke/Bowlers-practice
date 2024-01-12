@@ -11,6 +11,7 @@ def after_sign_out_path_for(resource)
   #ログアウトしたら、ログイン画面に遷移
 end
 
+
 #ゲストログインに関する記述
 def guest_sign_in
     user = User.guest
