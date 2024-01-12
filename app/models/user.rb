@@ -62,6 +62,11 @@ GUEST_USER_EMAIL = "guest@example.com"
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.user_name = "guestuser"
+      user.last_name = 'ゲスト'
+      user.first_name = '太郎'
+      user.last_name_kana = 'ゲスト'
+      user.first_name_kana = 'タロウ'
+
     end
   end
 
