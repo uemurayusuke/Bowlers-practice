@@ -18,9 +18,9 @@ end
 #検索機能の記述
  def self.search_for(content, method)
     if method == 'perfect'
-      Book.where(title: content)
+      Post.where(title: content)
     else
-      Book.where('title LIKE ?', '%'+content+'%')
+      Post.where('title LIKE ?', '%'+content+'%')
     end
  end
 
