@@ -1,1 +1,40 @@
 <h1>ユーザー詳細(管理者側)</h1>
+
+<%= image_tag @user.get_profile_image(50,50) %>
+<%= @user.user_name %>
+<%= @user.introduction %>
+<%= @user.last_name %>
+<%= @user.first_name %>
+<%= @user.last_name_kana %>
+<%= @user.first_name_kana %>
+<%= @user.email %>
+<%= @user.introduction %>
+
+
+<%= link_to "プロフィール編集", edit_admin_user_path(@user) %>
+
+
+<p>follows</p>
+  <%= link_to @user.followings.count, user_followings_path(@user) %>
+
+<p>followers</p>
+  <%= link_to @user.followers.count, user_followers_path(@user) %>
+
+<% @posts.each do |post| %>
+    <%= post.caption %>
+    <%= image_tag post.get_post_image(400,400)%>
+    <%= link_to "投稿詳細", post_path(post) %>
+<% end %>
+
+
+
+ <!--ユーザー詳細画面に何を載せるか？-->
+ <!--プロフ写真-->
+ <!--ユーザー名-->
+ <!--投稿件数表示-->
+ <!--フォロー数-->
+ <!--フォロワー数-->
+ <!--自己紹介文-->
+ <!--自分が今まで投稿した投稿を新しい順で表示する-->
+ <!--フォローする・しないボタン(フォロー機能)※他人だけ表示-->
+ <!--メッセージ送信ボタン(DM機能)※他人だけ表示-->

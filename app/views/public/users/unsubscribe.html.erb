@@ -1,15 +1,65 @@
-<h1>退会確認画面</h1>
-
-<strong>本当に退会しますか？</strong>
-
-<h5>
-  退会すると、会員登録や<br/>
-  これまでの購入履歴が閲覧できなくなります。<br/>
-  退会する場合は、「退会する」をクリックしてください。
-</h5>
+<%= @user.last_name+@user.first_name %>さんの会員情報編集
 
 
-<%= link_to "退会しない", user_path(current_user) %>
 
+<%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
+    <div class="form-row">
+      <div class="form-group col-2 pl-5">会員ID</div>
+      <div class="form-group col-1">
+        <%= @customer.id %>
+     </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-2 pl-5">氏名</div>
+      <div class="form-group col-4">
+        <%=f.text_field :last_name %>
+        <span class="pl-4"><%=f.text_field :first_name %></span>
+      </div>
+   </div>
+   <div class="form-row">
+      <div class="form-group col-2 pl-5">フリガナ</div>
+     <div class="form-group col-4">
+        <%=f.text_field :last_name_kana %>
+        <span class="pl-4"><%=f.text_field :first_name_kana %></span>
+      </div>
+      </div>
+    <div class="form-row">
 
-<%= link_to "退会する", withdraw_users_path, method: :patch %>
+      <div class="form-group col-2 pl-5">郵便番号</div>
+      <div class="form-group col-1">
+       <%=f.text_field :postal_code %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-2 pl-5">住所</div>
+      <div class="form-group col-5">
+        <%=f.text_field :address, class: "col-12" %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-2 pl-5">電話番号</div>
+     <div class="form-group col-1">
+        <%=f.text_field :telephone_number %>
+     </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-2 pl-5">メールアドレス</div>
+      <div class="form-group col-1">
+        <%=f.text_field :email %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-2 pl-5">会員ステータス</div>
+      <div class="form-group col-2">
+       <%=f.radio_button :is_active, true %>
+     <%=f.label :is_active_true,"有効" %>
+     <span class="pl-3"><%=f.radio_button :is_active, false %>
+       <%=f.label :is_active_false,"退会" %>
+      </span>
+      </div>
+    </div>
+    <div class="form-row ">
+       <div class="form-group col-2 pl-5"></div>
+      <div><%= f.submit "変更を保存", class:"btn btn-success" %></div>
+    </div>
+<% end %>

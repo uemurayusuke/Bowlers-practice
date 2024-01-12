@@ -27,6 +27,7 @@ class Public::ChatsController < ApplicationController
   redirect_to request.referer
   end
 
+
   private
   def chat_params
     params.require(:chat).permit(:message, :room_id)
@@ -39,4 +40,5 @@ class Public::ChatsController < ApplicationController
       #とりあえず投稿一覧にリダイレクト
     end
   end
+
 end
