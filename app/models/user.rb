@@ -49,7 +49,7 @@ end
 #検索機能の記述
 def self.search_for(content, method)
     if method == 'perfect'
-      User.where(name: content)
+      User.where(user_name: content)
     else
       User.where('name LIKE ?', '%' + content + '%')
     end

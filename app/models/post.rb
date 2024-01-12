@@ -18,7 +18,7 @@ end
 #検索機能の記述
  def self.search_for(content, method)
     if method == 'perfect'
-      Post.where(title: content)
+      Post.where(caption: content)
     else
       Post.where('title LIKE ?', '%'+content+'%')
     end
