@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   #ユーザー認証関係
   devise_scope :user do
   root to: 'public/sessions#new'
+  #ゲストログインに関する記述
+  post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
   # コントローラとアクションは後で確認する
 
