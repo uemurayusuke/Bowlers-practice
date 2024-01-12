@@ -19,8 +19,8 @@ end
  def self.search_for(content, method)
     if method == 'perfect'
       Post.where(caption: content)
-    else
-      Post.where('title LIKE ?', '%'+content+'%')
+   elsif method == 'partial'
+      Post.where('caption LIKE ?', '%'+content+'%')
     end
  end
 

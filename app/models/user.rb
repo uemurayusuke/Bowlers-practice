@@ -50,8 +50,8 @@ end
 def self.search_for(content, method)
     if method == 'perfect'
       User.where(user_name: content)
-    else
-      User.where('name LIKE ?', '%' + content + '%')
+    elsif method == 'partial'
+      User.where('user_name LIKE ?', '%' + content + '%')
     end
 end
 
