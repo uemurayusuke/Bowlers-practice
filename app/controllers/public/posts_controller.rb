@@ -10,6 +10,7 @@ class Public::PostsController < ApplicationController
 
   if @post.save
      @book.save_tags(tag_list)
+    #save_tagsはpostモデルに定義されている。
     redirect_to user_path(current_user)
     #投稿したユーザー詳細画面に飛ぶ
   else
