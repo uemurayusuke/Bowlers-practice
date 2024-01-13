@@ -15,8 +15,8 @@ has_one_attached :post_image
   def save_tags(savepost_tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     #:nameはタグテーブルで保存されているカラム。
-    old_tags = current_tags - savebook_tags
-    new_tags = savebook_tags - current_tags
+    old_tags = current_tags - savepost_tags
+    new_tags = savepost_tags - current_tags
 
     old_tags.each do |old_name|
       self.tags.delete Tag.find_by(name:old_name)

@@ -6,6 +6,15 @@
     <% end %>
     <%= post.user.user_name %>
     <%= post.caption %>
+
+
+     <% post.tags.each do |tag| %>
+       <%= tag.name %>
+      <% end %>
+
+
+
+
    <% if post.post_image.attached? %>
     　<%= image_tag post.get_post_image(400,400)%>
      <% else %>

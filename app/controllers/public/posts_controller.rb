@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
    tag_list = params[:post][:tag_name].split(',')
 
   if @post.save
-     @book.save_tags(tag_list)
+     @post.save_tags(tag_list)
     #save_tagsはpostモデルに定義されている。
     redirect_to user_path(current_user)
     #投稿したユーザー詳細画面に飛ぶ

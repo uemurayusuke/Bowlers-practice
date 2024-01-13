@@ -11,6 +11,10 @@
      <% else %>
      <% end %>
 
+     <% @post.tags.each do |tag| %>
+       <%= tag.name %>
+      <% end %>
+
     <%= link_to "削除", post_path(@post), method: :delete %>
 
 
