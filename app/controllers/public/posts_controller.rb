@@ -6,7 +6,10 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+   tag_list = params[:post][:tag_name].split(',')
+
   if @post.save
+     @book.save_tags(tag_list)
     redirect_to user_path(current_user)
     #投稿したユーザー詳細画面に飛ぶ
   else

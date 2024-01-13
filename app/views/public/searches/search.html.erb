@@ -15,17 +15,17 @@
       <%= post.caption %>
     <% end %>
   </div>
-<% end %>
+
+<% elsif @model == 'post' || @model == 'tag' %>
+	<h3>タグ検索結果 "<%= @content %>"</h3>
+
+  <% @records.each do |post| %>
+      <%= image_tag post.user.get_profile_image, size: '50x50' %>
+      <%= post.caption %></td>
+      <% post.tags.each do |tag| %>
+       <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+      <% end %>
+    <% end %>
+ <% end %>
 
 
-
-
-
-<!--手本の記述-->
-<% if @model == 'user' %>
-	<h3>Users search for "<%= @content %>"</h3>
-  <%= render 'users/index', users: @records %>
-<% elsif @model == 'book' || @model == 'tag' %>
-	<h3>Books search for "<%= @content %>"</h3>
-  <%= render 'books/index', books: @records %>
-<% end %>
