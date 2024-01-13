@@ -18,9 +18,18 @@ class Public::PostsController < ApplicationController
   end
   end
 
+
+
   def index
-    @posts = Post.all
+    if params[:latest]
+      @posts = Post.latest
+    else
+      @posts = Post.all
+    end
   end
+
+
+
 
   def destroy
     post = Post.find(params[:id])

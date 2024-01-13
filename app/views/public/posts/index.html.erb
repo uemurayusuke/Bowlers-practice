@@ -1,6 +1,6 @@
 <h1>投稿一覧</h1>
 
- <%= link_to "新しい順", posts_path(sort: 'created_at DESC') %>
+ <%= link_to "新しい順", posts_path(latest: "true") %>
 
   <% @posts.each do |post| %>
     <%= link_to(post.user) do %>

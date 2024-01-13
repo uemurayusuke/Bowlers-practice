@@ -9,6 +9,9 @@ has_one_attached :post_image
   has_many :tags, through: :post_tags
 
 
+#投稿を新しい順に表示するコード
+  scope :latest, -> {order(created_at: :desc)}
+
 
 
   #タグ検索の記述
