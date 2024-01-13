@@ -1,0 +1,6 @@
+<!--フォローした人の投稿を表示するビューです-->
+
+<div>
+<%  @users.includes(:posts).each do |post| %>
+ <%= post.caption %>
+<% end %>

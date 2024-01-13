@@ -25,6 +25,7 @@ namespace :admin do
 
 #ユーザー側
    scope module: :public do
+    get  "/users/:id/following_posts/" => "users#following_posts", as: 'following_posts'
     resources :posts, only: [:new, :create, :index, :destroy, :show] do
      resources :post_comments, only: [:create, :destroy]
      resource :favorite, only: [:create, :destroy]
@@ -36,6 +37,7 @@ namespace :admin do
       get 'followers' => 'relationships#followers', as: 'followers'
       member do
          get :favorites
+         get :following, :followers,:users_posts
       end
       collection do
         get :unsubscribe
