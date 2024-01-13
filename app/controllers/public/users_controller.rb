@@ -44,8 +44,7 @@ class Public::UsersController < ApplicationController
 
 
    def following_posts
-   @user  = User.find(params[:id])
-   @users = @user.followings
+   @posts = Post.where(user_id: [*current_user.following_ids])
    end
 
 

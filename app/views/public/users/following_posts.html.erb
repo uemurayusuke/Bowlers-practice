@@ -1,5 +1,11 @@
-<!--フォローした人の投稿を表示するビューです-->
+<h1>フォローしたユーザーの投稿一覧</h1>
+<%  @posts.each do |post| %>
+  <%= post.caption %>
+  <%= post.user.user_name %>
+ <% end %>
 
-<%  @users.includes(:posts).each do |post| %>
- <%= post.caption %>
-<% end %>
+
+
+
+
+
