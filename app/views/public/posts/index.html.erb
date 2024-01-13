@@ -9,7 +9,7 @@
 
 
      <% post.tags.each do |tag| %>
-       <%= tag.name %>
+        <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
       <% end %>
 
 

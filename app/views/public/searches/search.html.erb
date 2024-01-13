@@ -20,7 +20,7 @@
 	<h3>タグ検索結果 "<%= @content %>"</h3>
 
   <% @records.each do |post| %>
-      <%= image_tag post.user.get_profile_image, size: '50x50' %>
+      <%= image_tag post.user.get_profile_image(50,50) %>
       <%= post.caption %></td>
       <% post.tags.each do |tag| %>
        <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
