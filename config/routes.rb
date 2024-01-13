@@ -25,7 +25,6 @@ namespace :admin do
 
 #ユーザー側
    scope module: :public do
-
     resources :posts, only: [:new, :create, :index, :destroy, :show] do
      resources :post_comments, only: [:create, :destroy]
      resource :favorite, only: [:create, :destroy]
@@ -44,7 +43,7 @@ namespace :admin do
         #ユーザーの退会確認画面
         patch :withdraw
         #ユーザーの退会処理(ステータス更新)
-        get  "following_posts"
+        get  "/:id/following_posts/" => "users#following_posts", as: 'following_posts'
       end
     end
     get '/search', to: 'searches#search'
