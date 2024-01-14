@@ -1,7 +1,10 @@
 <h1>投稿一覧</h1>
 
- <%= link_to "新しい順", posts_path(latest: "true") %>
- <%= link_to "フォローした人の投稿一覧", following_posts_users_path(current_user) %>
+<div class="btn-group">
+ <%= link_to "投稿新着順", posts_path(latest: "true"),class: "btn btn-primary"%>
+ <%= link_to "フォローした人の投稿一覧", following_posts_users_path(current_user),class: "btn btn-info"%>
+</div>
+
 
   <% @posts.each do |post| %>
     <%= link_to(post.user) do %>

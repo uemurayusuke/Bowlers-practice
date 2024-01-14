@@ -47,7 +47,7 @@
 <div>
   <%= form_with model: [@post, @post_comment] do |f| %>
     <%= f.text_area :comment, rows: '5' %>
-    <%= f.submit "送信する" %>
+    <%= f.submit "送信する", class: "btn btn-primary" %>
   <% end %>
 </div>
 
