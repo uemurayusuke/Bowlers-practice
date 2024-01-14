@@ -1,10 +1,15 @@
 <h1>フォローしたユーザーの投稿一覧</h1>
+
+<% if @posts.present? %>
+
 <%  @posts.each do |post| %>
   <%= post.caption %>
   <%= post.user.user_name %>
  <% end %>
 
-
+<% else %>
+  <p>フォローした人の投稿はありません</p>
+<% end %>
 
 
 

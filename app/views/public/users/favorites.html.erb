@@ -1,3 +1,9 @@
+<% if @favorite_posts.present? %>
+
 <% @favorite_posts.each do |post| %>
 <%= post.caption%>
+<% end %>
+
+<% else %>
+  <p>いいねした投稿はありません</p>
 <% end %>
