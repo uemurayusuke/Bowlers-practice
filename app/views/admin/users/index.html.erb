@@ -6,7 +6,7 @@
   フォロー数: <%= user.followings.count %>
   フォロワー数: <%= user.followers.count %>
   <%= link_to "プロフィールへ", admin_user_path(user) %>
-  <%= user.is_active ? "有効" : "退会" %>
+  <%= user.is_active ? "会員" : "退会済" %>
 <% end %>
 
 
