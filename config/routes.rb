@@ -25,6 +25,7 @@ namespace :admin do
 
 #ユーザー側
    scope module: :public do
+    delete 'posts/destroy_all' => 'posts#destroy_all', as: 'destroy_all_posts'
     resources :posts, only: [:new, :create, :index, :destroy, :show] do
      resources :post_comments, only: [:create, :destroy]
      resource :favorite, only: [:create, :destroy]

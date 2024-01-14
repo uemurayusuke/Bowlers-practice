@@ -1,5 +1,9 @@
 </h1>ユーザ詳細画面</h1>
 
+ <div class="col-2 offset-md-6">
+  <%= link_to "投稿を全て削除する", destroy_all_posts_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に投稿を全て削除しますか？" } %>
+ </div>
+
 <%= image_tag @user.get_profile_image(50,50) %>
 <%= @user.user_name %>
 <%= @user.introduction %>
