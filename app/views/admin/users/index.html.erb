@@ -3,6 +3,7 @@
 <% @users.each do |user| %>
   <%= image_tag user.get_profile_image(50,50) %>
   <%= user.user_name %>
+  投稿数:<%= user.posts.count %>
   フォロー数: <%= user.followings.count %>
   フォロワー数: <%= user.followers.count %>
   <%= link_to "プロフィールへ", admin_user_path(user) %>

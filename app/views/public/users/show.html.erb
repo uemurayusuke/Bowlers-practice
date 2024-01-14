@@ -8,6 +8,9 @@
 <%= @user.user_name %>
 <%= @user.introduction %>
 
+<span>投稿</span>
+<%= @user.posts.count %>
+<span>件</span>
 
   <span>フォロー中</span>
   <%= link_to @user.followings.count, user_followings_path(@user) %>

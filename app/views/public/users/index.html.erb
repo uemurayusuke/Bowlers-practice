@@ -4,8 +4,11 @@
   <%= image_tag user.get_profile_image(50,50) %>
   <%= user.user_name %>
 
+  投稿数:<%= user.posts.count %>
   フォロー数: <%= user.followings.count %>
   フォロワー数: <%= user.followers.count %>
+
+
 
 
    <% if current_user != user%>
