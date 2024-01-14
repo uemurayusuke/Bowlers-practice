@@ -5,33 +5,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/1043f0fa51.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-   <!--長野ケーキ参考-->
-   <!--リンク先後で指定-->
-  <header>
-          </div>
-            <% if admin_signed_in? %>
-            <div>
-                <button><%= link_to '会員一覧', admin_users_path %></button>
-                 <button><%= link_to '投稿一覧', admin_posts_path %></button>
-                <button><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></button>
-              </div>
-
-             <div>
-            <% elsif user_signed_in? %>
-                <button><%= link_to 'マイページ', user_path(current_user) %></button>
-                <button><%= link_to '投稿一覧', posts_path %></button>
-                <button><%= link_to 'ユーザ一覧', users_path %></button>
-                <button><%= link_to '新規投稿', new_post_path %></button>
-                <button><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></button>
-                </div>
-            <% end %>
-    </header>
-
+ <%= render 'layouts/header' %>
 <div>
  <%= render 'public/searches/form' %>
  <%= render "public/searches/tag_form" %>
