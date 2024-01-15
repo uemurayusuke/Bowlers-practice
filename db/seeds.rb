@@ -1,4 +1,4 @@
-5.times do |n|
+2.times do |n|
   User.create!(
     last_name: "試験#{n + 1}",
     first_name: "太郎#{n + 1}",
