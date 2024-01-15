@@ -1,13 +1,29 @@
-<h1>ユーザ一覧(管理者側)</h1>
+<div class="container mt-5">
+<h3>ユーザーリスト(管理者側)</h3>
+
+<table class="table mt-3">
+  <tr>
+    <th class="col-1"></th>
+    <th class="col-2">ユーザー名</th>
+    <th class="col-1">投稿数</th>
+    <th class="col-2">フォロー数</th>
+    <th class="col-2">フォロワー数</th>
+    <th class="col-2">会員ステータス</th>
+    <th class="col-2"></th>
+  </tr>
 
 <% @users.each do |user| %>
-  <%= image_tag user.get_profile_image(50,50) %>
-  <%= user.user_name %>
-  投稿数:<%= user.posts.count %>
-  フォロー数: <%= user.followings.count %>
-  フォロワー数: <%= user.followers.count %>
-  <%= link_to "プロフィールへ", admin_user_path(user) %>
-  <%= user.is_active ? "会員" : "退会済" %>
+ <tr>
+   <td class="col-1"><%= image_tag user.get_profile_image(50,50) %></td>
+    <td class="col-2"><%= user.user_name %></td>
+    <td class="col-1">投稿数:<%= user.posts.count %></td>
+    <td class="col-2">フォロー数: <%= user.followings.count %></td>
+    <td class="col-2">フォロワー数: <%= user.followers.count %></td>
+    <td class="col-2"><%= user.is_active ? "会員" : "退会済" %></td>
+    <td class="col-2">
+      <%= link_to "ユーサー詳細", admin_user_path(user), class: "btn btn-secondary" %>
+    </td>
+</tr>
 <% end %>
-
-
+</table>
+</div>
