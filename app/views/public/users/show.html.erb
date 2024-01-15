@@ -1,33 +1,15 @@
-</h1>ユーザ詳細画面</h1>
+<div class="container mt-5">
 
- <div class="col-2 offset-md-6">
-  <%= link_to "投稿を全て削除する", destroy_all_posts_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に投稿を全て削除しますか？" } %>
- </div>
+<div class="row">
+  <div class="col-3">
+<%= image_tag @user.get_profile_image(200,200) %>
+</div>
 
-<%= image_tag @user.get_profile_image(50,50) %>
-<%= @user.user_name %>
-<%= @user.introduction %>
-
-<span>投稿</span>
-<%= @user.posts.count %>
-<span>件</span>
-
-  <span>フォロー中</span>
-  <%= link_to @user.followings.count, user_followings_path(@user) %>
-
-  <span>フォロワー</span>
-  <%= link_to @user.followers.count , user_followers_path(@user) %>
-
-
-<% @posts.each do |post| %>
-    <%= post.caption %>
-     <% if post.post_image.attached? %>
-    　<%= image_tag post.get_post_image(400,400)%>
-     <% else %>
-     <% end %>
-    <%= link_to "投稿詳細", post_path(post) %>
-<% end %>
-
+  <div class="col-9">
+<table class="table mt-3">
+<tr>
+<td><%= @user.user_name %></td>
+<td>
 <% unless @user.guest_user? %>
 <% if current_user != @user %>
   <% if current_user.following?(@user) %>
@@ -41,19 +23,35 @@
     <%= link_to "いいね一覧", favorites_user_path(current_user), class: "btn btn-primary" %>
   <% end %>
   <% end %>
-
-
 <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
     <%= link_to 'chatを始める', chat_path(@user.id) %>
 <% end %>
+</td>
+</tr>
 
- <!--ユーザー詳細画面に何を載せるか？-->
- <!--プロフ写真-->
- <!--ユーザー名-->
- <!--投稿件数表示-->
- <!--フォロー数-->
- <!--フォロワー数-->
- <!--自己紹介文-->
- <!--自分が今まで投稿した投稿を新しい順で表示する-->
- <!--フォローする・しないボタン(フォロー機能)※他人だけ表示-->
- <!--メッセージ送信ボタン(DM機能)※他人だけ表示-->
+<tr>
+  <td>投稿<%= @user.posts.count %>件</td>
+  <td>フォロー中<%= link_to @user.followings.count, user_followings_path(@user) %></td>
+  <td>フォロワー<%= link_to @user.followers.count , user_followers_path(@user) %></td>
+</tr>
+
+<tr>
+<td><%= @user.introduction %></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+
+<div class="container mt-5">
+  <%= link_to "投稿を全て削除する", destroy_all_posts_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に投稿を全て削除しますか？" } %>
+<% @posts.each do |post| %>
+    <%= post.caption %>
+     <% if post.post_image.attached? %>
+    　<%= image_tag post.get_post_image(400,400)%>
+     <% else %>
+     <% end %>
+    <%= link_to "投稿詳細", post_path(post) %>
+<% end %>
+</div>
