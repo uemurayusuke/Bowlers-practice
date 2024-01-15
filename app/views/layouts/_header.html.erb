@@ -1,8 +1,11 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <!--<a class="navbar-brand" href="/"><span>Bowlers</span></a>-->
-      <p class="navbar-brand"><span>Bowlers</span></p>
+      <span class="navbar-brand">
+      <span class="fa-solid fa-bowling-ball"></span>
+       Bowlers
+      </span>
+
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -59,7 +62,7 @@
 
           <li>
             <%=  link_to admin_post_comments_path ,class: 'nav-link text-light' do %>
-             <i class="fa-solid fa-rectangle-list"></i> コメントリスト
+             <i class="fa-solid fa-comment-dots"></i>コメントリスト
             <% end %>
           </li>
 
