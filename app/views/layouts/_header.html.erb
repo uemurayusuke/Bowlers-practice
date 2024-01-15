@@ -57,6 +57,12 @@
             <% end %>
           </li>
 
+          <li>
+            <%=  link_to admin_post_comments_path ,class: 'nav-link text-light' do %>
+             <i class="fa-solid fa-rectangle-list"></i> 投稿リスト
+            <% end %>
+          </li>
+
          <li>
             <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
