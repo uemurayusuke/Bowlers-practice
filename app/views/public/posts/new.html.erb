@@ -1,24 +1,33 @@
-<h1>新規投稿画面</h1>
+<div class="container mt-5">
+<h3>新規投稿画面</h3>
 
 <%= form_with model: @post, url:posts_path do |f| %>
 
-<div>
-<%= f.label :投稿内容 %>
-<%= f.text_area :caption ,placeholder: "投稿内容"%>
-</div>
+<table class="table mt-3">
 
-<div>
-  <%= f.label :投稿画像 %>
-  <%= f.file_field :post_image, accept: "image/*" %>
-</div>
+<tr>
+  <td><%= f.label :投稿内容 %></td>
+  <td><%= f.text_area :caption ,placeholder: "投稿内容"%></td>
+</tr>
 
-<div>
-<%= f.label :タグ %>
-<%= f.text_field :tag_name %>
-</div>
 
-<div>
-<%=f.submit "投稿する", class: "btn btn-success" %>
-</div>
+<tr>
+  <td><%= f.label :投稿画像 %></td>
+  <td><%= f.file_field :post_image, accept: "image/*" %></td>
+</tr>
 
+
+<tr>
+  <td><%= f.label :タグ %></td>
+  <td><%= f.text_field :tag_name %></td>
+</tr>
+
+
+<tr>
+  <td></td>
+  <td><%=f.submit "投稿する", class: "btn btn-success" %></td>
+</tr>
+</table>
 <% end %>
+
+
