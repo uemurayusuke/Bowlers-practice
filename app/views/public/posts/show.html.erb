@@ -96,31 +96,52 @@
  </div>
 </div>
 
-
-
-
-
-
-
-<div class="row mt-2">
-
+ <div class="row mt-2">
   <div class="col-3">
   </div>
 
-  <div class="col-7">
+  <div class="col">
   <% @post.post_comments.each do |post_comment| %>
-    <p><%= image_tag post_comment.user.get_profile_image(50,50) %></p>
+  <table>
+    <tr>
+    <td>
+    <%= image_tag post_comment.user.get_profile_image(50,50) %>
     <%= post_comment.user.user_name %>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-    <% if post_comment.user == current_user %>
+    </td>
+    </tr>
+
+    <tr>
+    <td><%= post_comment.comment %></td>
+    <td class="pl-3">
+       <% if post_comment.user == current_user %>
       <%= link_to "コメント削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger" %>
     <% end %>
-  <% end %>
+    </td>
+    </tr>
 
-  <%= form_with model: [@post, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5' %>
-    <%= f.submit "送信する", class: "btn btn-primary" %>
+    <tr>
+    <td><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+</table>
+
   <% end %>
+</div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-3">
+  </div>
+  <div class="col">
+    <table>
+  <%= form_with model: [@post, @post_comment] do |f| %>
+  <tr>
+    <td><%= f.text_area :comment, rows: '5' %></td>
+    </tr>
+    <tr>
+    <td><%= f.submit "送信する", class: "btn btn-primary" %></td>
+    </tr>
+  <% end %>
+  </table>
 </div>
 </div>
 </div>

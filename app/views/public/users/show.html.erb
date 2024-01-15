@@ -30,8 +30,8 @@
 
 <tr>
   <td>投稿<%= @user.posts.count %>件</td>
-  <td>フォロー中<%= link_to @user.followings.count, user_followings_path(@user) %></td>
-  <td>フォロワー<%= link_to @user.followers.count , user_followers_path(@user) %></td>
+  <td>フォロー中<%= link_to @user.followings.count, user_followings_path(@user) %>
+  フォロワー<%= link_to @user.followers.count , user_followers_path(@user) %></td>
 </tr>
 
 <tr>
