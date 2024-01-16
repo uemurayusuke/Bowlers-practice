@@ -11,19 +11,25 @@
   </head>
 
 <div><%= render 'layouts/header' %></div>
-
 <div>
 <% flash.each do |message_type, message| %>
       <div class="flash-message <%= message_type %>"><%= message %></div>
 <% end %>
 </div>
 
+
 <% if user_signed_in? %>
-<div>
- <%= render 'public/searches/form' %>
- <%= render "public/searches/tag_form" %>
+<div class="form-row mt-3">
+ <div class="col"></div>
+ <div class="col-4"><%= render 'public/searches/form' %></div>
+</div>
+
+<div class="form-row mt-3">
+  <div class="col"></div>
+ <div class="col-4"><%= render "public/searches/tag_form" %></div>
 </div>
 <% end %>
+
 
 <!--元々の記述-->
   <body>
