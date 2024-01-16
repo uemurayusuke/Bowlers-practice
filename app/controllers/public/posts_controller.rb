@@ -34,10 +34,13 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def destroy_posts
+  end
+
   def destroy_all
     posts = Post.where(user_id: current_user.id)
     posts.destroy_all
-    redirect_to request.referer
+    redirect_to user_path(current_user)
   end
 
 

@@ -27,6 +27,7 @@ namespace :admin do
 #ユーザー側
    scope module: :public do
     delete 'posts/destroy_all' => 'posts#destroy_all', as: 'destroy_all_posts'
+    get 'posts/destroy' => 'posts#destroy_posts' , as: 'destroy_posts'
     resources :posts, only: [:new, :create, :index, :destroy, :show] do
      resources :post_comments, only: [:create, :destroy]
      resource :favorite, only: [:create, :destroy]
@@ -41,10 +42,10 @@ namespace :admin do
          get :following, :followers,:users_posts
       end
       collection do
+         #ユーザーの退会確認画面
         get :unsubscribe
-        #ユーザーの退会確認画面
-        patch :withdraw
         #ユーザーの退会処理(ステータス更新)
+        patch :withdraw
         get  "/:id/following_posts/" => "users#following_posts", as: 'following_posts'
       end
     end
