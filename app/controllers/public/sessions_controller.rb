@@ -7,7 +7,7 @@ def after_sign_in_path_for(resource)
 end
 
 def after_sign_out_path_for(resource)
-  new_user_session_path
+  root_path
   #ログアウトしたら、ログイン画面に遷移
 end
 

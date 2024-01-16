@@ -1,21 +1,50 @@
 <div class="container mt-5">
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+<h2 class="row">
+   <div class="col-5"></div>
+   <div class="col-4">
+   <div class="fa-solid fa-bowling-ball"></div>
+   Bowlers
   </div>
+</h2>
 
-  <div class="actions">
-    <%= f.submit "ログイン",class: "btn btn-primary" %>
+
+<div class="row">
+   <div class="col-5"></div>
+   <div class="col-4">Bowlersにログイン</div>
+</div>
+
+ <div class="row mt-2">
+   <div class="col-5"></div>
+   <div class="col-4">
+     <%= f.label :メールアドレス %></br>
+     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+   </div>
+ </div>
+
+
+ <div class="row mt-2">
+   <div class="col-5"></div>
+   <div class="col-4">
+     <%= f.label :パスワード %></br>
+     <%= f.password_field :password, autocomplete: "current-password" %></div>
+ </div>
+
+
+  <div class="row mt-3">
+    <div class="col-5"></div>
+    <div class="col-2"><%= f.submit "ログイン",class: "btn btn-primary" %></div>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<div class="row mt-3">
+  <div class="col-5"></div>
+  <div class="col-2"><%= render "public/shared/links" %></div>
+</div>
 
 </div>
+
+
+
+

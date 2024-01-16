@@ -11,10 +11,13 @@
   </head>
 
  <%= render 'layouts/header' %>
+
+<% if user_signed_in? %>
 <div>
  <%= render 'public/searches/form' %>
  <%= render "public/searches/tag_form" %>
 </div>
+<% end %>
 
 <!--元々の記述-->
   <body>
