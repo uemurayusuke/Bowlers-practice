@@ -7,7 +7,7 @@ def after_sign_in_path_for(resource)
 end
 
 def after_sign_out_path_for(resource)
-  flash[:alert] = "ログアウトしました！"
+  flash[:alert] = "ログアウトしました"
   root_path
 end
 
@@ -26,7 +26,7 @@ def user_state
   if user.is_active
     return unless user.valid_password?(params[:user][:password])
   else
-    redirect_to  new_user_registration_path
+    redirect_to  new_user_registration_path, alert: "会員情報がありません。新規登録をしてください。"
   end
 end
 
