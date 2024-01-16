@@ -1,37 +1,48 @@
 <div class="container mt-5">
 
 <div class="row">
+  <div class="col-2">
+  </div>
   <div class="col-3">
 <%= image_tag @user.get_profile_image(200,200) %>
 </div>
 
-  <div class="col-9">
-<table class="table mt-3">
+  <div class="col-5">
+<table class="table mt-3 text-center">
 <tr>
 <td><%= @user.user_name %></td>
-<td>
+
 <% unless @user.guest_user? %>
 <% if current_user != @user %>
+
   <% if current_user.following?(@user) %>
-    <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn btn-danger" %>
+    <td><%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn btn-danger" %></td>
   <% else %>
-    <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-primary" %>
+    <td><%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-primary" %></td>
   <% end %>
   <% else %>
-    <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %>
-    <%= link_to "いいね投稿リスト", favorites_user_path(current_user), class: "btn btn-primary" %>
+  　<td><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %></td>
+    <td><%= link_to "いいね投稿リスト", favorites_user_path(current_user), class: "btn btn-primary" %></td>
   <% end %>
   <% end %>
+
 <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
-    <%= link_to 'chatを始める', chat_path(@user.id), class: "btn btn-secondary" %>
+    <td><%= link_to 'chatを始める', chat_path(@user.id), class: "btn btn-secondary" %></td>
 <% end %>
-</td>
 </tr>
 
 <tr>
   <td>投稿<%= @user.posts.count %>件</td>
-  <td>フォロー中<%= link_to @user.followings.count, user_followings_path(@user) %>
-  フォロワー<%= link_to @user.followers.count , user_followers_path(@user) %></td>
+  <td>
+  <%= link_to user_followings_path(@user), class: "btn btn-outline-primary" do %>
+フォロー中<%= @user.followings.count %>人
+<% end %>
+</td>
+<td>
+<%= link_to user_followers_path(@user), class: "btn btn-outline-primary" do %>
+フォロワー<%= @user.followers.count %>人
+<% end %>
+</td>
 </tr>
 
 <tr>
@@ -45,30 +56,41 @@
 
 <div class="container mt-5 ">
 <div class="row">
-  <div class="col-2">
+
+  <div class="col-3">
   </div>
+
   <div class="col-3">
 <%= link_to "投稿を全削除", destroy_all_posts_path, method: :delete, class: "btn btn-danger", data: { confirm: "本当に投稿を全て削除しますか？" } %>
 </div>
-</div>
-<% @posts.each do |post| %>
 
+</div>
+
+
+<% @posts.each do |post| %>
 <div class="row mt-5">
-  <div class="col-2">
+
+  <div class="col-3">
   </div>
+
   <div class="col-1">
   <%= link_to(post.user) do %>
     <%= image_tag post.user.get_profile_image(50,50)%>
     <% end %>
   </div>
-  <div class='col-1'>
+
+  <div class='col-2'>
   <%= post.user.user_name %>
   </div>
-  <div class='col-1'>
+
+  <div class='col-2'>
   <% post.tags.each do |tag| %>
-    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+  <%= link_to search_path(content: tag.name, model:"tag", method: "perfect"), class: "btn btn-outline-dark" do %>
+   <%= tag.name %>
   <% end %>
-  </div>
+  <% end %>
+</div>
+
   <div class='col-2'>
   <%= link_to "投稿詳細", post_path(post), class: "btn btn-secondary" %>
   </div>
@@ -101,4 +123,5 @@
   <% end %>
   </div>
   <% end %>
+</div>
 </div>
