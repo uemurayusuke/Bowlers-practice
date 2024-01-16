@@ -12,6 +12,12 @@
 
 <div><%= render 'layouts/header' %></div>
 
+<div>
+<% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+<% end %>
+</div>
+
 <% if user_signed_in? %>
 <div>
  <%= render 'public/searches/form' %>
