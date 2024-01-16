@@ -32,6 +32,7 @@ class Public::UsersController < ApplicationController
     user = current_user
     user.update(is_active: false)
     sign_out(user)
+    flash[:alert] = "退会しました"
     redirect_to root_path
   end
 

@@ -3,6 +3,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
 
 def after_sign_up_path_for(resource)
+  flash[:notice] = "新規登録完了しました！"
   user_path(current_user)
       # 遷移先はログインしているユーザー詳細ページ
 end
