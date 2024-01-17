@@ -66,6 +66,7 @@
 
 </div>
 
+<% if @posts.present? %>
 
 <% @posts.each do |post| %>
 <div class="row mt-5">
@@ -124,4 +125,17 @@
   </div>
   <% end %>
 </div>
+<% else %>
+<div class="row mt-4">
+
+  <div class="col-3">
+  </div>
+
+  <div class="col-5">
+<h5><%= @user.user_name %>さんの投稿はありません</h5>
+</div>
+
+</div>
+
+<% end %>
 </div>
