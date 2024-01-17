@@ -1,20 +1,33 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <span>
+      <h3>
        <%= link_to root_path,class: 'nav-link text-light' do %>
-        <i class="fa-solid fa-bowling-ball"></i>Bowlers
+        <i class="fa-solid fa-bowling-ball"></i>
+        Bowlers
       <% end %>
+      </h3>
+
+      <% if user_signed_in? %>
+      <span class="nav-link text-light">
+        <%= current_user.user_name %> さんがログインしています
       </span>
+      <% elsif admin_signed_in? %>
+      <span class="nav-link text-light">
+        管理者でログインしています
+      </span>
+<% end %>
 
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
         <ul class="navbar-nav ml-auto">
 
         <% if user_signed_in? %>
+
           <li>
             <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
               <i class="fas fa-home"></i> マイページ
@@ -48,7 +61,6 @@
 
 
         <% elsif admin_signed_in? %>
-
           <li>
             <%=  link_to admin_users_path,class: 'nav-link text-light' do %>
               <i class="fas fa-users"></i> ユーザーリスト

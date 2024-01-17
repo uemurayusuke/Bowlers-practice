@@ -24,8 +24,8 @@ global.$ = jQuery;
 window.$ = jQuery;
 
 $(function(){
-  setTimeout("$('.notice').fadeOut('slow')", 3000);
+  setTimeout("$('.notice').fadeOut('slow')", 1000);
 });
 $(function(){
-  setTimeout("$('.alert').fadeOut('slow')", 3000);
+  setTimeout("$('.alert').fadeOut('slow')", 1000);
 });
