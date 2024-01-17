@@ -1,4 +1,7 @@
-<h1>チャットルーム</h1>
+<div class="container mt-5 ">
+<h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
+  <%= @user.user_name %> さんとのチャットルーム
+</h3>
 
 
 <div class="message" style="width: 400px;">
@@ -15,3 +18,5 @@
   <%= f.text_field :message %>
   <%= f.hidden_field :room_id %>
 <% end %>
+
+</div>
