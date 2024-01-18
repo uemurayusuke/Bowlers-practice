@@ -10,7 +10,11 @@
   </tr>
 <% @post_comments.each do |post_comment| %>
   <tr>
-    <td class="col-1"><%= image_tag @users.find(post_comment.user_id).get_profile_image(50,50) %></td>
+    <td class="col-1">
+    <%= link_to admin_user_path(post_comment.user_id) do %>
+     <%= image_tag @users.find(post_comment.user_id).get_profile_image(50,50) %>
+    <% end %>
+    </td>
     <td class="col-2"><%= @users.find(post_comment.user_id).user_name %></td>
     <td class="col-5"><%= post_comment.comment %></td>
     <td class="col-1"><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>

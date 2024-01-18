@@ -8,7 +8,7 @@
 </div>
 
   <div class="col-5">
-<table class="table mt-3 text-center">
+<table class="table mt-3 ">
 <tr>
 <td><%= @user.user_name %></td>
 
@@ -21,8 +21,8 @@
     <td><%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-primary" %></td>
   <% end %>
   <% else %>
-  　<td><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %></td>
-    <td><%= link_to "いいね投稿リスト", favorites_user_path(current_user), class: "btn btn-primary" %></td>
+  　<td><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %>
+    <%= link_to "いいね投稿リスト", favorites_user_path(current_user), class: "btn btn-primary" %></td>
   <% end %>
   <% end %>
 
@@ -37,11 +37,11 @@
   <%= link_to user_followings_path(@user), class: "btn btn-outline-primary" do %>
 フォロー中<%= @user.followings.count %>人
 <% end %>
-</td>
-<td>
+<span class="pl-1">
 <%= link_to user_followers_path(@user), class: "btn btn-outline-primary" do %>
 フォロワー<%= @user.followers.count %>人
 <% end %>
+</span>
 </td>
 </tr>
 
@@ -55,6 +55,7 @@
 
 
 <div class="container mt-5 ">
+  <% if @posts.present? %>
 <div class="row">
 
   <div class="col-3">
@@ -66,7 +67,7 @@
 
 </div>
 
-<% if @posts.present? %>
+
 
 <% @posts.each do |post| %>
 <div class="row mt-5">
@@ -131,7 +132,7 @@
   <div class="col-3">
   </div>
 
-  <div class="col-5">
+  <div class="col-6 text-center">
 <h5><%= @user.user_name %>さんの投稿はありません</h5>
 </div>
 
