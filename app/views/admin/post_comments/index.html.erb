@@ -1,5 +1,8 @@
 <div class="container mt-5">
 <h3>コメントリスト</h3>
+
+<% if @post_comments.present? %>
+
 <table class="table mt-3">
   <tr>
     <th class="col-1"></th>
@@ -24,5 +27,20 @@
   </tr>
 <% end %>
 </table>
+
+
+<% else %>
+<div class="row mt-4">
+
+  <div class="col-3">
+  </div>
+
+  <div class="col-6 text-center">
+<h5>コメントはありません</h5>
+</div>
+
+</div>
+
+<% end %>
 
 </div>

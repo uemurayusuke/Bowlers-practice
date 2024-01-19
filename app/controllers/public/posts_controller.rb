@@ -10,9 +10,8 @@ class Public::PostsController < ApplicationController
 
   if @post.save
      @post.save_tags(tag_list)
-    #save_tagsはpostモデルに定義されている。
+     flash[:notice] = "投稿が完了しました"
     redirect_to user_path(current_user)
-    #投稿したユーザー詳細画面に飛ぶ
   else
     render :new
   end
@@ -31,6 +30,7 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
+    flash[:alert] = "投稿が削除されました"
     redirect_to posts_path
   end
 
@@ -40,6 +40,7 @@ class Public::PostsController < ApplicationController
   def destroy_all
     posts = Post.where(user_id: current_user.id)
     posts.destroy_all
+    flash[:alert] = "投稿が全て削除されました"
     redirect_to user_path(current_user)
   end
 
