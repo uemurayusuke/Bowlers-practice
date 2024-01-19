@@ -8,6 +8,8 @@ has_one_attached :post_image
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 
+  validates :caption, presence: true
+
 
 #投稿を新しい順に表示するコード
   scope :latest, -> {order(created_at: :desc)}

@@ -43,7 +43,10 @@ ja:
               blank: "メールアドレスを入力してください"
             password:
               blank: "パスワードを入力してください"
-
+        post:
+          attributes:
+            caption:
+              blank: "投稿内容を入力してください"
 
   date:
     abbr_day_names:

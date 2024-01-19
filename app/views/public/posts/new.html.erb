@@ -1,6 +1,8 @@
 <div class="container mt-5">
 <h3>新規投稿画面</h3>
 
+<div><%= render "public/shared/error_messages", resource: @post %></div>
+
 <%= form_with model: @post, url:posts_path do |f| %>
 
 <table class="table mt-3">
@@ -29,5 +31,4 @@
 </tr>
 </table>
 <% end %>
-
-
+</div>

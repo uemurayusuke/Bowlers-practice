@@ -9,6 +9,7 @@ ja:
         remember_me: "ログインを記憶"
     models:
       user: "ユーザー"
+      post: "投稿"
   devise:
     confirmations:
       new:

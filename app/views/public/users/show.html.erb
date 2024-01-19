@@ -51,20 +51,18 @@
 </table>
 </div>
 </div>
-</div>
 
 
-<div class="container mt-5 ">
+
+
+
   <% if @posts.present? %>
 <div class="row">
-
   <div class="col-3">
   </div>
-
   <div class="col-3">
 <%= link_to "投稿を全削除", destroy_posts_path, class: "btn btn-danger" %>
 </div>
-
 </div>
 
 
@@ -124,8 +122,19 @@
   <% else %>
   <% end %>
   </div>
-  <% end %>
 </div>
+
+
+<div class="row">
+  <div class="col-3">
+  </div>
+ <div class="col-3">
+  ♥<%= post.favorites.count %> いいね
+ <span class="ml-1">コメント件数：<%= post.post_comments.count %></span>
+ </div>
+</div>
+ <% end %>
+
 <% else %>
 <div class="row mt-4">
 

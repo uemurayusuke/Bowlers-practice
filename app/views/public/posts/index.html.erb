@@ -16,6 +16,7 @@
 
 
 
+ <% if @posts.present? %>
 
 <% @posts.each do |post| %>
 <div class="row mt-4">
@@ -33,11 +34,18 @@
   <%= post.user.user_name %>
   </div>
 
-  <div class='col-1'>
+
+   <div class='col-2'>
   <% post.tags.each do |tag| %>
-    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+  <%= link_to search_path(content: tag.name, model:"tag", method: "perfect"), class: "btn btn-outline-dark" do %>
+   <%= tag.name %>
   <% end %>
-  </div>
+  <% end %>
+</div>
+
+
+
+
 
   <div class='col-2'>
   <%= link_to "投稿詳細", post_path(post), class: "btn btn-secondary" %>
@@ -95,9 +103,19 @@
  </div>
 
 </div>
+<% end %>
 
+<% else %>
+<div class="row mt-4">
 
+  <div class="col-3">
+  </div>
 
+  <div class="col-6 text-center">
+<h5>投稿はありません</h5>
+</div>
+
+</div>
 
 <% end %>
 
