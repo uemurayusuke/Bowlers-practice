@@ -40,6 +40,8 @@
        <%= link_to "ユーザー詳細", user_path(user), class: "btn btn-secondary" %>
     </td>
 </tr>
+
 <% end %>
 </table>
 </div>
+<%= paginate @users %>
