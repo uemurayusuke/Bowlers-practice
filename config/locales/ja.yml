@@ -29,10 +29,6 @@ ja:
       models:
         user:
           attributes:
-            email:
-              blank: "メールアドレスを入力してください"
-            password:
-              blank: "パスワードを入力してください"
             last_name:
               blank: "姓を入力してください"
             first_name:
@@ -41,6 +37,12 @@ ja:
               blank: "セイを入力してください"
             first_name_kana:
               blank: "メイを入力してください"
+            user_name:
+              blank: "ユーザー名を入力してください"
+            email:
+              blank: "メールアドレスを入力してください"
+            password:
+              blank: "パスワードを入力してください"
 
 
   date:

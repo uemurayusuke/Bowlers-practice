@@ -17,10 +17,11 @@ has_many :user_rooms
 has_many :chats
 has_many :rooms, through: :user_rooms
 
-
-
-
-
+validates :last_name, presence: true
+validates :first_name, presence: true
+validates :last_name_kana, presence: true
+validates :first_name_kana, presence: true
+validates :user_name, presence: true
 
 has_one_attached :profile_image
 
