@@ -5,60 +5,47 @@
 </div>
 
 <div class="container mt-5">
+  <div class="row main-row">
+    <div class="col-12">
+
+<div class="form-row">
+     <h2 class="form-group mx-auto">
+         <div class="fa-solid fa-bowling-ball"></div>
+          Bowlers
+      </h2>
+   </div>
+
+<div class="form-row">
+     <h5 class="form-group mx-auto">
+          管理者ログイン
+      </h5>
+</div>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<h2 class="text-center pt-5">
-   <div class="fa-solid fa-bowling-ball"></div>
-   Bowlers
-</h2>
-
-
-<h3 class="text-center pt-1">
-   管理者ログイン
-</h3>
-
-<div class="row justify-content-center pt-2">
-<div class="col-4">
-  <%= f.label :メールアドレス %>
+      <div class="form-row">
+        <div class="form-group col-3 mx-auto">
+          <label for="email"><%= f.label :メールアドレス %></label>
+          <%= f.text_field :email, class: "form-control"%>
 </div>
 </div>
 
 
-<div class="row justify-content-center">
-<div class="col-4">
-  <%= f.email_field :email,style: "width: 100%;", autofocus: true %>
-</div>
-</div>
+      <div class="form-row">
+         <div class="form-group col-3 mx-auto">
+          <label for="first_name_kana"><%= f.label :パスワード%></label>
+          <%= f.text_field :password, class: "form-control"%>
+        </div>
+        </div>
+
+<div class="form-row">
+<div class="form-group col-3 mx-auto">
+        <%= f.submit "ログイン",class: "btn btn-success col-12" %>
+      </div>
+      </div>
+      <% end %>
 
 
-
-
-
-<div class="row justify-content-center pt-2">
-<div class="col-4">
-  <%= f.label :パスワード%>
-</div>
-</div>
-
-
-<div class="row justify-content-center">
-<div class="col-4">
-   <%= f.password_field :password,style: "width: 100%;" %>
-</div>
-</div>
-
-
-
-<div class="row justify-content-center pt-2">
-<div class="col-4">
-  <%= f.submit "ログイン",class: "btn btn-primary",style: "width: 100%;" %>
-</div>
-</div>
-
-
-
-
-<% end %>
 
 
 
