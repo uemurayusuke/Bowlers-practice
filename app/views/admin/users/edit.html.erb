@@ -1,101 +1,31 @@
 <div class="container mt-5">
-  <div class="row">
-
-<h3>
-  <%= @user.last_name+@user.first_name %>さんの会員情報編集
-</h3>
-
-<div><%= render "public/shared/error_messages", resource: @user %></div>
-
-<table class="table mt-3">
-<%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
-<tr>
-<td><%= f.label :会員id %></td>
-<td></td>
-<td><%= @user.id %></td>
-</tr>
-
-<tr>
-  <td>名前</td>
-  <td><%= f.label :last_name, "(姓)" %></td>
-  <td>
-  <%= f.text_field :last_name, autofocus: true%>
-  <%= f.label :first_name, "(名)" %>
-  <%= f.text_field :first_name %>
-  </td>
-</tr>
-
-<tr>
-  <td>フリガナ</td>
-  <td><%= f.label :last_name_kana, "(セイ)" %></td>
-  <td>
-  <%= f.text_field :last_name_kana %>
-  <%= f.label :first_name_kana, "(メイ)" %>
-  <%= f.text_field :first_name_kana %>
-  </td>
-</tr>
-
-<tr>
-  <td><%= f.label :email, "メールアドレス" %></td>
-  <td></td>
-  <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-</tr>
-
-<tr>
-  <td><%= f.label :プロフィール画像 %></td>
-  <td></td>
-  <td><%= f.file_field :profile_image, accept: "image/*" %></td>
-</tr>
-
-<tr>
-  <td><%= f.label :ユーザー名 %></td>
-  <td></td>
-  <td><%= f.text_field :user_name %></td>
-</tr>
-
-<tr>
-  <td><%= f.label :自己紹介文 %></td>
-  <td></td>
-  <td><%= f.text_area :introduction %></td>
-</tr>
-
-<tr>
-<td><%= f.label :会員ステータス %></td>
-<td></td>
-<td>
-<%=f.radio_button :is_active, true %>
-<%=f.label :is_active_true,"有効" %>
-<%=f.radio_button :is_active, false %>
-<%=f.label :is_active_false,"退会" %>
-</td>
-</tr>
-
-<tr>
-  <td></td>
-  <td></td>
-  <td><%=f.submit "変更内容を保存", class: "btn btn-success" %></td>
-</tr>
-<% end %>
-</table>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-<div class="container mt-5">
   <div class="row main-row">
     <div class="col-12">
-     <h4 class="col-4"><strong>新規会員登録</strong></h4>
+
+<div class="form-row">
+     <h4 class="form-group col-4">
+       <strong>
+         <%= @user.last_name+@user.first_name %>さんの会員情報編集
+         </strong>
+      </h4>
+</div>
      <%= form_with model: @user, url: user_registration_path do |f| %>
 
-     <%= render "public/shared/error_messages", resource: resource %>
+
+     <%= render "public/shared/error_messages", resource: @user %>
+
+
+     <div class="form-row mt-3">
+        <span class="form-group col-3"><%= f.label :会員id %></span>
+        <div class="form-group col-3">
+         <%= @user.id %>
+        </div>
+      </div>
+
+
+
+
+
 
       <div class="form-row">
        <span class="form-group col-3 pt-4">名前</span>
@@ -131,6 +61,22 @@
 
 
 
+
+
+
+
+<div class="form-row">
+        <span class="form-group col-3"><%= f.label :自己紹介文 %></span>
+        <div class="form-group col-6">
+         <%= f.text_area :introduction, class: "form-control",rows: 4 %>
+        </div>
+      </div>
+
+
+
+
+
+
       <div class="form-row">
         <span class="form-group col-3">メールアドレス</span>
         <div class="form-group col-6">
@@ -152,26 +98,41 @@
         </div>
       </div>
 
+
+
+
+
+
+
+      <div class="form-row">
+        <span class="form-group col-3"><%= f.label :会員ステータス %></span>
+        <div class="form-group col-3">
+          <%=f.radio_button :is_active, true %>
+          <%=f.label :is_active_true,"有効" %>
+          <%=f.radio_button :is_active, false %>
+          <%=f.label :is_active_false,"退会" %>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
       <div class="actions form-group justify-content:center; d-flex">
         <span class="form-group col-3"></span>
-        <%= f.submit "新規登録",class: "btn btn-success col-4 " %>
+        <%= f.submit "変更内容を保存",class: "btn btn-success col-3 " %>
       </div>
       <% end %>
 
 
 
-      <div class="actions form-group justify-content:center; d-flex">
-         <span class="form-group col-3"></span>
-      <%= link_to "ログインはこちら", new_session_path(resource_name),class: "btn btn-primary  col-4" %>
-      </div>
 
-      <div class="actions form-group justify-content:center; d-flex">
-         <span class="form-group col-3"></span>
-      <%= link_to "トップに戻る", root_path,class: "btn btn-secondary col-4" %>
-      </div>
-
-
-
-    </div>
+</div>
   </div>
 </div>
