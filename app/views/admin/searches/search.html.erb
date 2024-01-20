@@ -1,0 +1,165 @@
+<% if @model == 'user' %>
+  <div class="container mt-5">
+	<h3>ユーザー検索結果 "<%= @content %>"</h3>
+  <table class="table mt-3">
+  <tr>
+    <th class="col-1"></th>
+    <th class="col-2">ユーザー名</th>
+    <th class="col-1">投稿数</th>
+    <th class="col-2">フォロー数</th>
+    <th class="col-2">フォロワー数</th>
+    <th class="col-2"></th>
+    <th class="col-2"></th>
+  </tr>
+
+    <% @records.each do |user| %>
+        <tr>
+   <td class="col-1"><%= image_tag user.get_profile_image(50,50) %></td>
+    <td class="col-2"><%= user.user_name %></td>
+    <td class="col-1">投稿数:<%= user.posts.count %></td>
+    <td class="col-2">フォロー数: <%= user.followings.count %></td>
+    <td class="col-2">フォロワー数: <%= user.followers.count %></td>
+
+    <td class="col-2">
+       <%= link_to "ユーザー詳細", user_path(user), class: "btn btn-secondary" %>
+    </td>
+</tr>
+<% end %>
+</table>
+</div>
+
+
+
+
+
+
+<% elsif @model == 'post' %>
+<div class="container mt-5">
+	<h3>投稿検索結果 "<%= @content %>"</h3>
+  <div>
+    <% @records.each do |post| %>
+      <div class="row mt-4">
+  <div class="col-2">
+  </div>
+  <div class="col-1">
+  <%= link_to(post.user) do %>
+    <%= image_tag post.user.get_profile_image(50,50)%>
+    <% end %>
+  </div>
+  <div class='col-1'>
+  <%= post.user.user_name %>
+  </div>
+  <div class='col-1'>
+  <% post.tags.each do |tag| %>
+    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+  <% end %>
+  </div>
+  <div class='col-2'>
+  <%= link_to "投稿詳細", post_path(post), class: "btn btn-secondary" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+  </div>
+  <div class='col-2'>
+  <%= post.created_at.strftime('%Y/%m/%d') %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-3">
+  </div>
+  <div class='col-7'>
+   <%= post.caption %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-3">
+  </div>
+  <div class='col-7'>
+  <% if post.post_image.attached? %>
+  <%= image_tag post.get_post_image(400,400) %>
+  <% else %>
+  <% end %>
+  </div>
+</div>
+<% end %>
+</div>
+
+
+
+
+
+<% elsif @model == 'post' || @model == 'tag' %>
+<div class="container mt-5">
+
+	<h3>タグ検索結果 "<%= @content %>"</h3>
+
+    <% @records.each do |post| %>
+  <div class="row mt-4">
+
+  <div class="col-2">
+  </div>
+
+  <div class="col-1">
+  <%= link_to(post.user) do %>
+    <%= image_tag post.user.get_profile_image(50,50)%>
+    <% end %>
+  </div>
+
+  <div class='col-1'>
+  <%= post.user.user_name %>
+  </div>
+
+  <div class='col-1'>
+  <% post.tags.each do |tag| %>
+    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+  <% end %>
+  </div>
+
+  <div class='col-2'>
+  <%= link_to "投稿詳細", post_path(post), class: "btn btn-secondary" %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-3">
+  </div>
+
+  <div class='col-2'>
+  <%= post.created_at.strftime('%Y/%m/%d') %>
+  </div>
+</div>
+
+
+<div class="row">
+
+  <div class="col-3">
+  </div>
+
+  <div class='col-7'>
+   <%= post.caption %>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-3">
+  </div>
+
+  <div class='col-7'>
+  <% if post.post_image.attached? %>
+  <%= image_tag post.get_post_image(400,400) %>
+  <% else %>
+  <% end %>
+  </div>
+
+</div>
+<% end %>
+</div>
+<% end %>
