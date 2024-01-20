@@ -2,7 +2,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 <h2 class="row">
-   <div class="col-5"></div>
+   <div class="col-4"></div>
    <div class="col-4">
    <div class="fa-solid fa-bowling-ball"></div>
    Bowlers
@@ -11,21 +11,21 @@
 
 
 <div class="row">
-   <div class="col-5"></div>
+   <div class="col-4"></div>
    <div class="col-4">Bowlersにログイン</div>
 </div>
 
  <div class="row mt-2">
-   <div class="col-5"></div>
+   <div class="col-4"></div>
    <div class="col-4">
      <%= f.label :メールアドレス %></br>
-     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+     <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50%" %>
    </div>
  </div>
 
 
  <div class="row mt-2">
-   <div class="col-5"></div>
+   <div class="col-4"></div>
    <div class="col-4">
      <%= f.label :パスワード %></br>
      <%= f.password_field :password, autocomplete: "current-password" %></div>
@@ -33,13 +33,13 @@
 
 
   <div class="row mt-3">
-    <div class="col-5"></div>
+    <div class="col-4"></div>
     <div class="col-2"><%= f.submit "ログイン",class: "btn btn-primary" %></div>
   </div>
 <% end %>
 
 <div class="row mt-3">
-  <div class="col-5"></div>
+  <div class="col-4"></div>
   <div class="col-2"><%= render "public/shared/links" %></div>
 </div>
 
