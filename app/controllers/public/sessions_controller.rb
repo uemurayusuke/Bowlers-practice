@@ -7,6 +7,7 @@ def after_sign_in_path_for(resource)
 end
 
 def after_sign_out_path_for(resource)
+  flash.clear
   flash[:alert] = "ログアウトしました"
   root_path
 end
