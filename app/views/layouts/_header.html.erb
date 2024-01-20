@@ -91,3 +91,17 @@
     </div>
   </nav>
 </header>
+
+<% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+<% end %>
+
+<div class="form-row mt-3">
+ <div class="col"></div>
+ <div class="col-4"><%= render 'public/searches/form' %></div>
+</div>
+
+<div class="form-row mt-3">
+  <div class="col"></div>
+ <div class="col-4"><%= render "public/searches/tag_form" %></div>
+</div>
