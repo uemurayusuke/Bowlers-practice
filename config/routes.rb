@@ -20,7 +20,10 @@ Rails.application.routes.draw do
 #管理者側
 namespace :admin do
   get '/search', to: 'searches#search'
-  resources :users, only:[:index, :show, :edit, :update]
+  resources :users, only:[:index, :show, :edit, :update] do
+  get 'followings' => 'relationships#followings', as: 'followings'
+  get 'followers' => 'relationships#followers', as: 'followers'
+end
   resources :posts, only:[:index, :show, :destroy]
   resources :post_comments, only:[:index, :destroy]
   end
