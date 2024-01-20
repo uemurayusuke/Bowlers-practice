@@ -1,6 +1,6 @@
 class Public::ChatsController < ApplicationController
-
-   before_action :reject_non_related, only: [:show]
+  before_action :authenticate_user!
+  before_action :reject_non_related, only: [:show]
 
   def show
     @user = User.find(params[:id])
