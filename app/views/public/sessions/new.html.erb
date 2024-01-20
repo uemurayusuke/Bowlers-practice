@@ -1,50 +1,63 @@
 <div class="container mt-5">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<h2 class="row">
-   <div class="col-4"></div>
-   <div class="col-4">
+<h2 class="text-center pt-5">
    <div class="fa-solid fa-bowling-ball"></div>
    Bowlers
-  </div>
 </h2>
 
 
-<div class="row">
-   <div class="col-4"></div>
-   <div class="col-4">Bowlersにログイン</div>
+<h3 class="text-center pt-1">
+   Bowlersにログイン
+</h3>
+
+<div class="row justify-content-center pt-2">
+<div class="col-4">
+  <%= f.label :メールアドレス %>
+</div>
 </div>
 
- <div class="row mt-2">
-   <div class="col-4"></div>
-   <div class="col-4">
-     <%= f.label :メールアドレス %></br>
-     <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "50%" %>
-   </div>
- </div>
+
+<div class="row justify-content-center">
+<div class="col-4">
+  <%= f.email_field :email,style: "width: 100%;", autofocus: true %>
+</div>
+</div>
 
 
- <div class="row mt-2">
-   <div class="col-4"></div>
-   <div class="col-4">
-     <%= f.label :パスワード %></br>
-     <%= f.password_field :password, autocomplete: "current-password" %></div>
- </div>
 
 
-  <div class="row mt-3">
-    <div class="col-4"></div>
-    <div class="col-2"><%= f.submit "ログイン",class: "btn btn-primary" %></div>
-  </div>
+
+<div class="row justify-content-center pt-2">
+<div class="col-4">
+  <%= f.label :パスワード%>
+</div>
+</div>
+
+
+<div class="row justify-content-center">
+<div class="col-4">
+   <%= f.password_field :password,style: "width: 100%;" %>
+</div>
+</div>
+
+
+
+<div class="row justify-content-center pt-2">
+<div class="col-4">
+  <%= f.submit "ログイン",class: "btn btn-primary",style: "width: 100%;" %>
+</div>
+</div>
+
+
+<div class="row justify-content-center pt-2">
+<div class="col-4">
+   <%= link_to "新規登録はこちら", new_registration_path(resource_name), class: "btn btn-success",style: "width: 100%;" %>
+</div>
+</div>
+
+
 <% end %>
-
-<div class="row mt-3">
-  <div class="col-4"></div>
-  <div class="col-2"><%= render "public/shared/links" %></div>
-</div>
-
-</div>
-
 
 
 
