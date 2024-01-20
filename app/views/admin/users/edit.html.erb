@@ -11,21 +11,13 @@
 </div>
      <%= form_with model: @user, url: user_registration_path do |f| %>
 
-
      <%= render "public/shared/error_messages", resource: @user %>
-
-
      <div class="form-row mt-3">
         <span class="form-group col-3"><%= f.label :会員id %></span>
         <div class="form-group col-3">
          <%= @user.id %>
         </div>
       </div>
-
-
-
-
-
 
       <div class="form-row">
        <span class="form-group col-3 pt-4">名前</span>
@@ -59,23 +51,12 @@
         </div>
       </div>
 
-
-
-
-
-
-
 <div class="form-row">
         <span class="form-group col-3"><%= f.label :自己紹介文 %></span>
         <div class="form-group col-6">
          <%= f.text_area :introduction, class: "form-control",rows: 4 %>
         </div>
       </div>
-
-
-
-
-
 
       <div class="form-row">
         <span class="form-group col-3">メールアドレス</span>
@@ -98,12 +79,6 @@
         </div>
       </div>
 
-
-
-
-
-
-
       <div class="form-row">
         <span class="form-group col-3"><%= f.label :会員ステータス %></span>
         <div class="form-group col-3">
@@ -114,24 +89,11 @@
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
       <div class="actions form-group justify-content:center; d-flex">
         <span class="form-group col-3"></span>
         <%= f.submit "変更内容を保存",class: "btn btn-success col-3 " %>
       </div>
       <% end %>
-
-
-
 
 </div>
   </div>

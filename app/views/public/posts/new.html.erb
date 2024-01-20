@@ -1,34 +1,52 @@
 <div class="container mt-5">
-<h3>新規投稿画面</h3>
+  <div class="row main-row">
+    <div class="col-12">
 
-<div><%= render "public/shared/error_messages", resource: @post %></div>
+<div class="form-row">
+  <div class="form-group col-1"></div>
+     <h4 class="form-group col-4">
+       <strong>
+         新規投稿画面
+         </strong>
+      </h4>
+</div>
+     <%= form_with model: @post, url:posts_path do |f| %>
 
-<%= form_with model: @post, url:posts_path do |f| %>
-
-<table class="table mt-3">
-
-<tr>
-  <td><%= f.label :投稿内容 %></td>
-  <td><%= f.text_area :caption ,placeholder: "投稿内容"%></td>
-</tr>
-
-
-<tr>
-  <td><%= f.label :投稿画像 %></td>
-  <td><%= f.file_field :post_image, accept: "image/*" %></td>
-</tr>
+    <%= render "public/shared/error_messages", resource: @post %>
 
 
-<tr>
-  <td><%= f.label :タグ %></td>
-  <td><%= f.text_field :tag_name %></td>
-</tr>
+<div class="form-row mt-3">
+  <div class="form-group col-1"></div>
 
+        <span class="form-group col-2"><%= f.label :投稿内容 %></span>
+        <div class="form-group col-6">
+         <%= f.text_area :caption, class: "form-control",rows: 4 %>
+        </div>
+      </div>
 
-<tr>
-  <td></td>
-  <td><%=f.submit "投稿する", class: "btn btn-success" %></td>
-</tr>
-</table>
-<% end %>
+      <div class="form-row">
+         <div class="form-group col-1"></div>
+        <span class="form-group col-2"><%= f.label :投稿画像 %></span>
+        <div class="form-group col-6">
+         <%= f.file_field :post_image, accept: "image/*" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+         <div class="form-group col-1"></div>
+        <span class="form-group col-2"><%= f.label :タグ %></span>
+        <div class="form-group col-3">
+         <%= f.text_field :tag_name, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="actions form-group justify-content:center; d-flex">
+         <div class="form-group col-1"></div>
+        <span class="form-group col-2"></span>
+        <%= f.submit "投稿する",class: "btn btn-success col-3 " %>
+      </div>
+      <% end %>
+
+</div>
+  </div>
 </div>
