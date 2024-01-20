@@ -13,7 +13,6 @@
 <h3 class="text-center mt-3">
    <div class="fa-solid fa-bowling-ball"></div>
    Bowlers
-  </div>
 </h3>
 
 
@@ -21,19 +20,26 @@
    〜ボウラーと繋がるSNS〜
 </h6>
 
- <div class="text-center mt-3">
-     <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "btn btn-secondary" %>
- </div>
+
+<div class="row justify-content-center pt-2">
+<div class="col-4">
+  <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "btn btn-secondary",style: "width: 100%;" %>
+</div>
+</div>
 
 
- <div class="text-center mt-3">
-    <%= link_to "ログインはこちら", new_user_session_path, class: "btn btn-primary" %>
- </div>
+<div class="row justify-content-center pt-2">
+<div class="col-4">
+   <%= link_to "ログインはこちら", new_user_session_path, class: "btn btn-primary",style: "width: 100%;" %>
+</div>
+</div>
 
 
-  <div class="text-center mt-3">
-    <%= link_to "新規登録はこちら", new_user_registration_path, class: "btn btn-success" %>
- </div>
+ <div class="row justify-content-center pt-2">
+<div class="col-4">
+   <%= link_to "新規登録はこちら", new_user_registration_path, class: "btn btn-success",style: "width: 100%;" %>
+</div>
+</div>
 
 
 </div>
