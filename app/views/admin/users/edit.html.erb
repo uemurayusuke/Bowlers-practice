@@ -79,3 +79,99 @@
 </table>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+<div class="container mt-5">
+  <div class="row main-row">
+    <div class="col-12">
+     <h4 class="col-4"><strong>新規会員登録</strong></h4>
+     <%= form_with model: @user, url: user_registration_path do |f| %>
+
+     <%= render "public/shared/error_messages", resource: resource %>
+
+      <div class="form-row">
+       <span class="form-group col-3 pt-4">名前</span>
+        <div class="form-group col-3">
+         <label for="last_name">(姓)</label>
+         <%= f.text_field :last_name, class: "form-control"%>
+        </div>
+        <div class="form-group col-3">
+         <label for="first_name">(名)</label>
+         <%= f.text_field :first_name, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3 pt-4">フリガナ</span>
+        <div class="form-group col-3">
+          <label for="last_name_kana">(セイ)</label>
+          <%= f.text_field :last_name_kana, class: "form-control"%>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="first_name_kana">(メイ)</label>
+          <%= f.text_field :first_name_kana, class: "form-control"%>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <span class="form-group col-3">ユーザー名</span>
+        <div class="form-group col-3">
+         <%= f.text_field :user_name, class: "form-control" %>
+        </div>
+      </div>
+
+
+
+      <div class="form-row">
+        <span class="form-group col-3">メールアドレス</span>
+        <div class="form-group col-6">
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">パスワード(6文字以上)</span>
+        <div class="form-group col-3">
+         <%= f.password_field :password, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <span class="form-group col-3">パスワード(確認用)</span>
+        <div class="form-group col-3">
+         <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="actions form-group justify-content:center; d-flex">
+        <span class="form-group col-3"></span>
+        <%= f.submit "新規登録",class: "btn btn-success col-4 " %>
+      </div>
+      <% end %>
+
+
+
+      <div class="actions form-group justify-content:center; d-flex">
+         <span class="form-group col-3"></span>
+      <%= link_to "ログインはこちら", new_session_path(resource_name),class: "btn btn-primary  col-4" %>
+      </div>
+
+      <div class="actions form-group justify-content:center; d-flex">
+         <span class="form-group col-3"></span>
+      <%= link_to "トップに戻る", root_path,class: "btn btn-secondary col-4" %>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
