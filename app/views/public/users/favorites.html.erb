@@ -63,3 +63,7 @@
 <% else %>
   <p>いいねした投稿はありません</p>
 <% end %>
+
+<div class="row mx-auto justify-content-center">
+  <%= paginate @favorite_posts %>
+</div>
