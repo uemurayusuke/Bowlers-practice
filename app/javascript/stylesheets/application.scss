@@ -37,5 +37,10 @@
 
 .header-bg {
   // 赤色です
-  background-color: crimson;
+  background-color: rgba(105, 105, 105);
+}
+
+.text-under-line {
+  background: linear-gradient(transparent 60%, rgba(128, 128, 128, 0.2) 40%);
+  padding: 0 0.1em;
 }

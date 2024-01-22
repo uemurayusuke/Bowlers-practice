@@ -1,5 +1,9 @@
 <div class="container mt-5 ">
-<h3>投稿詳細</h3>
+  <div class="row">
+  <div class="col-2">
+  </div>
+<h3 class="text-under-line">投稿詳細</h3>
+</div>
 
 <div class="row mt-4">
   <div class="col-2">
@@ -15,9 +19,11 @@
   <%= @post.user.user_name %>
   </div>
 
-  <div class='col-1'>
+  <div class='col-2'>
   <% @post.tags.each do |tag| %>
-    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+    <%= link_to search_path(content: tag.name, model:"tag", method: "perfect"), class: "btn btn-outline-dark" do %>
+   <%= tag.name %>
+  <% end %>
   <% end %>
   </div>
 
@@ -129,7 +135,11 @@
     <table>
   <%= form_with model: [@post, @post_comment] do |f| %>
   <tr>
-    <td><%= f.text_area :comment, rows: '5' %></td>
+    <div class="form-row">
+        <div class="form-group col-8">
+         <%= f.text_area :comment, class: "form-control",rows: 4 %>
+        </div>
+      </div>
     </tr>
     <tr>
     <td><%= f.submit "送信する", class: "btn btn-primary" %></td>

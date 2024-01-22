@@ -4,9 +4,9 @@
 
 <div class="form-row">
      <h4 class="form-group col-4">
-       <strong>
+       <span class="text-under-line">
          <%= @user.last_name+@user.first_name %>さんの会員情報編集
-         </strong>
+         </span>
       </h4>
 </div>
      <%= form_with model: @user, url:admin_user_path do |f| %>
