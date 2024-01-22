@@ -62,7 +62,7 @@
   <div class='col-1'>
   <%= post.user.user_name %>
   </div>
-  <div class='col-1'>
+  <div class='col-2'>
   <% post.tags.each do |tag| %>
   <%= link_to search_path(content: tag.name, model:"tag", method: "perfect"), class: "btn btn-outline-dark" do %>
    <%= tag.name %>
@@ -101,6 +101,26 @@
   <% end %>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-3">
+  </div>
+ <div class="col-3">
+   <% if post.favorited_by?(current_user) %>
+
+      <%= link_to post_favorite_path(post), method: :delete do %>
+        ♥<%= post.favorites.count %> いいね
+      <% end %>
+
+    <% else %>
+      <%= link_to post_favorite_path(post), method: :post do %>
+        ♡<%= post.favorites.count %> いいね
+      <% end %>
+     <% end %>
+ <span class="ml-1">コメント件数：<%= post.post_comments.count %></span>
+ </div>
+</div>
+
 <% end %>
 </div>
 
@@ -173,8 +193,27 @@
   <% else %>
   <% end %>
   </div>
-
 </div>
+
+  <div class="row">
+  <div class="col-3">
+  </div>
+ <div class="col-3">
+   <% if post.favorited_by?(current_user) %>
+
+      <%= link_to post_favorite_path(post), method: :delete do %>
+        ♥<%= post.favorites.count %> いいね
+      <% end %>
+
+    <% else %>
+      <%= link_to post_favorite_path(post), method: :post do %>
+        ♡<%= post.favorites.count %> いいね
+      <% end %>
+     <% end %>
+ <span class="ml-1">コメント件数：<%= post.post_comments.count %></span>
+ </div>
+</div>
+
 <% end %>
 </div>
 <% end %>
