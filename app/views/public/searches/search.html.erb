@@ -14,8 +14,10 @@
 
     <% @records.each do |user| %>
         <tr>
-   <td class="col-1"><%= image_tag user.get_profile_image(50,50) %></td>
-    <td class="col-2"><%= user.user_name %></td>
+   <td class="col-2"><%= image_tag user.get_profile_image(50,50) %></td>
+    <td class="col-1">
+      <%= user.user_name %>
+    </td>
     <td class="col-1">投稿数:<%= user.posts.count %></td>
     <td class="col-2">フォロー数: <%= user.followings.count %></td>
     <td class="col-2">フォロワー数: <%= user.followers.count %></td>
@@ -62,7 +64,9 @@
   </div>
   <div class='col-1'>
   <% post.tags.each do |tag| %>
-    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+  <%= link_to search_path(content: tag.name, model:"tag", method: "perfect"), class: "btn btn-outline-dark" do %>
+   <%= tag.name %>
+  <% end %>
   <% end %>
   </div>
   <div class='col-2'>
@@ -125,9 +129,9 @@
   <%= post.user.user_name %>
   </div>
 
-  <div class='col-1'>
+  <div class='col-2'>
   <% post.tags.each do |tag| %>
-    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+    <%= tag.name %>
   <% end %>
   </div>
 
