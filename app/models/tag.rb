@@ -11,10 +11,11 @@ class Tag < ApplicationRecord
       tags = Tag.where(name: content)
       #:nameはタグテーブルで保存されているカラム。
     elsif method == 'partial'
-      tags = Tag.where('name LIKE ?', '%' + content)
+      tags = Tag.where('name LIKE ?', '%'+content+'%')
     end
 
     return tags.inject(init = []) {|result, tag| result + tag.posts}
 
   end
 end
+
