@@ -23,6 +23,8 @@ class Public::PostsController < ApplicationController
   def index
     if params[:latest]
       @posts = Post.latest.page(params[:page])
+    elsif params[:old]
+      @posts = Post.old.page(params[:page])
     else
       @posts = Post.page(params[:page])
     end
