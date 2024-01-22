@@ -105,8 +105,11 @@
   <table>
     <tr>
     <td>
-    <%= image_tag post_comment.user.get_profile_image(50,50) %>
+      <%= link_to(post_comment.user) do %>
+    <%= image_tag post_comment.user.get_profile_image(50,50)%>
+  <% end %>
     <%= post_comment.user.user_name %>
+
     </td>
     </tr>
 
