@@ -1,21 +1,25 @@
+
 <div class="container mt-5 ">
  <div class="row">
  <div class="col-2">
+ </div>
 <h3 class="text-under-line">投稿リスト</h3>
 </div>
-</div>
 
-<div class="row mt-3">
+
+
+
+ <% if @posts.present? %>
+
+ <div class="row mt-3">
  <div class="col-2">
  </div>
- <div class="col-3">
- <%= link_to "投稿新着順", admin_posts_path(latest: "true"),class: "btn btn-primary"%>
+ <div class="col-3 btn-group">
+ <%= link_to "投稿新着順", admin_posts_path(latest: "true"),class: "btn btn-outline-primary"%>
+  <%= link_to "投稿古い順", admin_posts_path(old: "true"),class: "btn btn-outline-primary"%>
  </div>
 </div>
 
-
-
-<% if @posts.present? %>
 
 <% @posts.each do |post| %>
 <div class="row mt-4">
@@ -24,8 +28,8 @@
   </div>
 
   <div class="col-1">
-  <%= link_to admin_user_path(post.user) do %>
-     <%= image_tag post.user.get_profile_image(50,50)%>
+  <%= link_to(post.user) do %>
+    <%= image_tag post.user.get_profile_image(50,50)%>
   <% end %>
   </div>
 
@@ -33,14 +37,21 @@
   <%= post.user.user_name %>
   </div>
 
-  <div class='col-1'>
+
+   <div class='col-2'>
   <% post.tags.each do |tag| %>
-    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+  <%= link_to search_path(content: tag.name, model:"tag", method: "perfect"), class: "btn btn-outline-dark" do %>
+   <%= tag.name %>
   <% end %>
-  </div>
+  <% end %>
+</div>
+
+
+
+
 
   <div class='col-2'>
-  <%= link_to "投稿詳細", admin_post_path(post), class: "btn btn-secondary" %>
+  <%= link_to "投稿詳細", post_path(post), class: "btn btn-secondary" %>
   </div>
 
 </div>
@@ -52,7 +63,7 @@
   </div>
 
   <div class='col-2'>
-  <%= post.created_at.strftime('%Y/%m/%d') %>
+  <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
   </div>
 
 </div>
@@ -85,18 +96,17 @@
 </div>
 
 <div class="row">
+
   <div class="col-3">
   </div>
+
  <div class="col-3">
   ♥<%= post.favorites.count %> いいね
  <span class="ml-1">コメント件数：<%= post.post_comments.count %></span>
  </div>
+
 </div>
-
-
-
 <% end %>
-
 
 <% else %>
 <div class="row mt-4">
@@ -112,7 +122,7 @@
 
 <% end %>
 
-<div class="row mx-auto justify-content-center">
+
+<div class="row mx-auto justify-content-center mt-4">
      <%= paginate @posts %>
-</div>
 </div>
