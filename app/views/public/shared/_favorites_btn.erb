@@ -9,4 +9,8 @@
         <span style="color: blue;" ><%= post.favorites.count %></span>
       <% end %>
   <% end %>
- <span class="ml-1">コメント件数：<%= post.post_comments.count %></span>
+
+
+ <span class="ml-1 post-comments-counter">
+    <%= render "public/post_comments/counter", post: post %>
+  </span>

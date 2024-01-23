@@ -6,11 +6,13 @@ class Public::PostCommentsController < ApplicationController
     @comment = current_user.post_comments.new(post_comment_params)
     @comment.post_id = post.id
     @comment.save
+    render 'create.js.erb'
   end
 
   def destroy
     @comment = PostComment.find(params[:id])
     @comment.destroy
+    render 'destroy.js.erb'
   end
 
 
