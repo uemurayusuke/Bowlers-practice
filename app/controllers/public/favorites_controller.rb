@@ -5,7 +5,7 @@ class Public::FavoritesController < ApplicationController
     post = Post.find(params[:post_id])
     @favorite = current_user.favorites.new(post_id: post.id)
     @favorite.save
-    render template: 'replace_favorites_btn'
+    render 'replace_favorites_btn.js.erb'
 
   end
 
@@ -13,7 +13,7 @@ class Public::FavoritesController < ApplicationController
     post = Post.find(params[:post_id])
     @favorite = current_user.favorites.find_by(post_id: post.id)
     @favorite.destroy
-     render template: 'replace_favorites_btn'
+     render 'replace_favorites_btn.js.erb'
 
   end
 
