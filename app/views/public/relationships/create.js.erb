@@ -1,1 +1,1 @@
-$('.follow').html("<%= j(render 'public/shared/follow_btn',  user: @user ) %>")
+$('#follow-<%=@user.id%>').html("<%= j(render 'public/shared/follow_btn',  user: @user ) %>")
