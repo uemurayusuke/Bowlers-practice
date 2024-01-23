@@ -39,17 +39,24 @@ class Public::UsersController < ApplicationController
 
   def favorites
     user = User.find(params[:id])
-    # favorites = Favorite.where(user_id: user.id).pluck(:post_id)
-    # @favorite_posts = Post.find(favorites)
     favorites = user.favorites.includes(:post).pluck(:post_id)
     @favorite_posts = Post.where(id: favorites).page(params[:page])
   end
 
 
-   def following_posts
+  def following_posts
    @posts = Post.where(user_id: [*current_user.following_ids])
-   @page_posts = @posts.page(params[:page])
-   end
+    if params[:latest]
+       @page_posts = @posts.latest.page(params[:page])
+    elsif params[:old]
+       @page_posts = @posts.old.page(params[:page])
+    else
+       @page_posts = @posts.page(params[:page])
+    end
+  end
+
+
+
 
 
   private
