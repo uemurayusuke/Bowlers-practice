@@ -5,13 +5,13 @@ class Public::RelationshipsController < ApplicationController
   def create
     user = User.find(params[:user_id])
     current_user.follow(user)
-		redirect_to request.referer
+		 render 'replace_follow_btn.js.erb'
   end
 
   def destroy
     user = User.find(params[:user_id])
     current_user.unfollow(user)
-		redirect_to request.referer
+		render 'replace_favorites_btn.js.erb'
   end
 
   def followings
