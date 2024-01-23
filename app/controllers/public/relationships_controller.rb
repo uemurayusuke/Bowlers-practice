@@ -11,7 +11,7 @@ class Public::RelationshipsController < ApplicationController
   def destroy
     user = User.find(params[:user_id])
     current_user.unfollow(user)
-		render 'replace_favorites_btn.js.erb'
+		render 'replace_follow_btn.js.erb'
   end
 
   def followings

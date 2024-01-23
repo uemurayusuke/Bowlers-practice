@@ -30,7 +30,7 @@
     <td class="col-2">フォロワー数: <%= user.followers.count %></td>
 
     <td class="col-2">
-      <div class=<%= "favorite-" + post.id.to_s %>>
+      <div class=<%= "follow-" + user.id.to_s %>>
 
     <%= render "public/shared/follow_btn", user: user %>
  </div>
