@@ -27,8 +27,16 @@
    </td>
     <td class="col-2"><%= user.user_name %></td>
     <td class="col-1">投稿数:<%= user.posts.count %></td>
-    <td class="col-2">フォロー数: <%= user.followings.count %></td>
-    <td class="col-2">フォロワー数: <%= user.followers.count %></td>
+
+
+    <td class="col-2 followings-counter">
+        <%= render "public/relationships/followings_counter", user: user %>
+    </td>
+    <td class="col-2 followers-counter">
+        <%= render "public/relationships/followers_counter", user: user %>
+    </td>
+
+
 
     <td class="col-2" id="follow-<%=user.id %>">
  <%= render "public/shared/follow_btn", user: user %>
