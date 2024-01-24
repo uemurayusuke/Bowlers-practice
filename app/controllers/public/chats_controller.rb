@@ -23,6 +23,10 @@ class Public::ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)
    @chat.save
+   @room = Room.find(@chat.room_id)
+  @chats = @room.chats
+
+
     render 'create.js.erb'
   end
 
