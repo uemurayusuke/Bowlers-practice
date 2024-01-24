@@ -40,19 +40,35 @@
 <% end %>
 </tr>
 
+
+
+
+
+
+
+
+
 <tr>
   <td>投稿<%= @user.posts.count %>件</td>
-  <td>
-  <%= link_to user_followings_path(@user), class: "btn btn-outline-primary" do %>
-フォロー中<%= @user.followings.count %>人
-<% end %>
-<span class="pl-1">
-<%= link_to user_followers_path(@user), class: "btn btn-outline-primary" do %>
-フォロワー<%= @user.followers.count %>人
-<% end %>
-</span>
+
+
+
+
+  <td  id="follow-btn-<%=@user.id %>">
+    <%= render "public/relationships/follow_btn", user: @user %>
 </td>
+
+
+
+
+
 </tr>
+
+
+
+
+
+
 
 <tr>
 <td><%= @user.introduction %></td>
