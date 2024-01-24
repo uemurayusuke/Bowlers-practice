@@ -1,22 +1,49 @@
 <div class="container mt-5 ">
-<h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>" class="text-under-line">
-  <%= @user.user_name %> さんとのチャットルーム
+  <div class="row justify-content-center">
+    <div class="col-10">
+<h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
+  <span class="text-under-line"><%= @user.user_name %> さんとのチャットルーム</span>
 </h3>
 
 
 <div class="message">
    <% @chats.each do |chat| %>
     <% if chat.user_id == current_user.id %>
-    <p style='text-align: right;'>
-      <%= chat.message %>
+
+
+
+    <p class="chat-text-right">
+      <span>
+      <%= image_tag chat.user.get_profile_image(50,50)%></br>
+      <%= chat.user.user_name%>
+      </span>
+     <span class="pr-3">
+        <%= chat.message %></br>
+        <%= chat.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </span>
     </p>
+
+
     <% else %>
-      <p style="text-align: left;">
-      <%= chat.message %>
+
+
+      <p class="chat-text-left">
+    <span>
+      <%= image_tag chat.user.get_profile_image(50,50)%></br>
+      <%= chat.user.user_name%>
+    </span>
+       <span class="pl-3">
+        <%= chat.message %></br>
+        <%= chat.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </span>
+
       </p>
+
+
     <% end %>
   <% end %>
 </div>
+
 
 <div class="errors">
   <%= render "layouts/errors", obj: @chat %>
@@ -26,5 +53,6 @@
   <%= f.text_field :message %>
   <%= f.hidden_field :room_id %>
 <% end %>
-
+</div>
+</div>
 </div>

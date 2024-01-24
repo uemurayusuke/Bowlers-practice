@@ -51,3 +51,19 @@
   --swiper-navigation-color: transparent;
   --swiper-pagination-color: transparent;
 }
+
+
+.chat-text-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-direction: row-reverse;
+}
+
+.chat-text-left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-diretion: row;
+
+}
