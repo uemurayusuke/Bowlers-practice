@@ -23,6 +23,8 @@ validates :last_name_kana, presence: true
 validates :first_name_kana, presence: true
 validates :user_name, presence: true
 
+
+
 has_one_attached :profile_image
 
 def get_profile_image(width, height)

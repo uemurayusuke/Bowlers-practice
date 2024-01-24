@@ -40,27 +40,27 @@ class Public::UsersController < ApplicationController
   def favorites
     user = User.find(params[:id])
     favorites = user.favorites.includes(:post).pluck(:post_id)
-    @favorite_posts = Post.where(id: favorites)
+    favorite_posts = Post.where(id: favorites)
 
     if params[:latest]
-       @page_posts = @favorite_posts.latest.page(params[:page])
+       @favorite_posts = favorite_posts.latest.page(params[:page])
     elsif params[:old]
-       @page_posts = @favorite_posts.old.page(params[:page])
+       @favorite_posts = favorite_posts.old.page(params[:page])
     else
-       @page_posts = @favorite_posts.page(params[:page])
+       @favorite_posts = favorite_posts.page(params[:page])
     end
 
   end
 
 
   def following_posts
-   @posts = Post.where(user_id: [*current_user.following_ids])
+   posts = Post.where(user_id: [*current_user.following_ids]).page(params[:page])
     if params[:latest]
-       @page_posts = @posts.latest.page(params[:page])
+       @posts = posts.latest.page(params[:page])
     elsif params[:old]
-       @page_posts = @posts.old.page(params[:page])
+       @posts = posts.old.page(params[:page])
     else
-       @page_posts = @posts.page(params[:page])
+       @posts = posts.page(params[:page])
     end
   end
 
