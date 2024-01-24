@@ -44,3 +44,14 @@
   background: linear-gradient(transparent 60%, rgba(128, 128, 128, 0.2) 40%);
   padding: 0 0.1em;
 }
+
+
+.swiper {
+  width: 600px;
+  height: 300px;
+}
+
+:root {
+  --swiper-navigation-color: transparent;
+  --swiper-pagination-color: transparent;
+}
