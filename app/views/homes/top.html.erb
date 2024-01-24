@@ -6,14 +6,16 @@
 
 <div class="container mt-5">
 
- <h2 class="text-center">
+ <h1 class="text-center">
+   <span class="text-under-line">
    ボウリングの輪を広げよう！
-</h2>
+   </span>
+</h1>
 
-<h3 class="text-center mt-3">
+<h2 class="text-center mt-3">
    <div class="fa-solid fa-bowling-ball"></div>
    Bowlers
-</h3>
+</h2>
 
 
 <h6 class="text-center mt-3">
@@ -42,21 +44,21 @@
 </div>
 
 
-</div>
 
-<div class="swiper">
+
+<div class="swiper text-center mt-4">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <%= image_tag 'bowling_slide1.jpg' %>
+          <%= image_tag 'bowling_slide1.jpg' , size: '500x350' %>
         </div>
         <div class="swiper-slide">
-           <%= image_tag 'bowling_slide2.jpg' %>
+           <%= image_tag 'bowling_slide2.jpg' , size: '500x350' %>
         </div>
         <div class="swiper-slide">
-           <%= image_tag 'bowling_slide3.jpg' %>
+           <%= image_tag 'bowling_slide3.jpg' , size: '500x350' %>
         </div>
         <div class="swiper-slide">
-           <%= image_tag 'bowling_slide4.jpg' %>
+           <%= image_tag 'bowling_slide4.jpg' , size: '500x350' %>
         </div>
       </div>
       <!-- ページネーションの要素 -->
@@ -64,4 +66,7 @@
       <!-- ナビゲーションボタン （前、次） -->
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
+</div>
+</div>
+</div>
 </div>
