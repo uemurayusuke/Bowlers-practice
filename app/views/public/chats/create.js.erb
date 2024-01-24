@@ -1,2 +1,2 @@
-$('.message').append("<p style='text-align: right;'><%= @chat.message %></p>");
-$('input[type=text]').val("")
+$('.chat-textarea').val("")
+$('.message').html("<%= j(render 'public/chats/index', chat: @chats) %>")

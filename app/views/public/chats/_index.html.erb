@@ -1,0 +1,25 @@
+<% chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+    <p class="chat-text-right">
+      <span>
+      <%= image_tag chat.user.get_profile_image(50,50)%></br>
+      <%= chat.user.user_name%>
+      </span>
+     <span class="pr-3">
+        <%= chat.message %></br>
+        <%= chat.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </span>
+    </p>
+    <% else %>
+      <p class="chat-text-left">
+    <span>
+      <%= image_tag chat.user.get_profile_image(50,50)%></br>
+      <%= chat.user.user_name%>
+    </span>
+       <span class="pl-3">
+        <%= chat.message %></br>
+        <%= chat.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </span>
+      </p>
+    <% end %>
+  <% end %>
