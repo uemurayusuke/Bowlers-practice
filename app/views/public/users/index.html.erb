@@ -11,8 +11,8 @@
     <th class="col-1">投稿数</th>
     <th class="col-2">フォロー数</th>
     <th class="col-2">フォロワー数</th>
-    <th class="col-2"></th>
-    <th class="col-2"></th>
+    <th class="col-5"></th>
+
   </tr>
 
 
@@ -38,16 +38,15 @@
 
 
 
-    <td class="col-2">
+    <td class="col-5" >
+      <div class="d-flex justify-content-between align-items-center">
         <div id="follow-<%=user.id %>">
     <%= render "public/shared/follow_btn", user: user %>
  </div>
+ 　<span class="pr-4"><%= link_to "ユーザー詳細", user_path(user), class: "btn btn-secondary" %></span>
+  </div>
     </td>
 
-
-    <td class="col-2">
-       <%= link_to "ユーザー詳細", user_path(user), class: "btn btn-secondary" %>
-    </td>
 </tr>
 
 <% end %>

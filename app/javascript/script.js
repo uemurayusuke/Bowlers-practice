@@ -10,7 +10,7 @@ const opt = {
     prevEl: '.swiper-button-prev',
   },
   autoplay: {
-    delay: 5000,
+    delay: 4000,
     disableOnInteraction: false,
   },
   speed: 3000,

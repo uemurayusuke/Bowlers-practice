@@ -7,7 +7,7 @@
 <%= image_tag @user.get_profile_image(200,200) %>
 </div>
 
-  <div class="col-5">
+  <div class="col-6">
 <table class="table mt-3 ">
 <tr>
 <td><%= @user.user_name %></td>
@@ -40,35 +40,12 @@
 <% end %>
 </tr>
 
-
-
-
-
-
-
-
-
 <tr>
   <td>投稿<%= @user.posts.count %>件</td>
-
-
-
-
   <td  id="follow-btn-<%=@user.id %>">
     <%= render "public/relationships/follow_btn", user: @user %>
 </td>
-
-
-
-
-
 </tr>
-
-
-
-
-
-
 
 <tr>
 <td><%= @user.introduction %></td>
