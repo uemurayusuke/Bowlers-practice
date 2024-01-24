@@ -14,12 +14,14 @@
 
 
 
-
+<div class="mt-4">
 <%= form_with model: @chat, data: {remote: true} do |f| %>
   <%= f.text_area :message, class: "form-control chat-textarea",rows: 4, placeholder: "ここにメッセージを入力してください" %>
   <%= f.hidden_field :room_id %>
-  <%= f.submit "送信する", class: "btn btn-primary" %>
+  <div class="mt-2"><%= f.submit "送信する", class: "btn btn-primary" %></div>
 <% end %>
+</div>
+
 </div>
 </div>
 </div>
