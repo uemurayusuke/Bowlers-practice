@@ -57,7 +57,7 @@
   </div>
 
   <div class="col-3">
-<%= link_to admin_posts_destroy_all_path, method: :delete, class: "btn btn-danger" do %>
+<%= link_to admin_posts_destroy_all_path(id: @user.id), method: :delete, class: "btn btn-danger", data: { confirm: "本当に全削除しますか？" } do %>
 投稿を全削除
 <% end %>
 </div>
