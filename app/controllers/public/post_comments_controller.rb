@@ -8,9 +8,11 @@ class Public::PostCommentsController < ApplicationController
     if @comment.save
     render 'create.js.erb'
     else
-
+       render :validater
     end
   end
+
+
 
   def destroy
     @comment = PostComment.find(params[:id])

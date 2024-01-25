@@ -16,7 +16,7 @@ class Public::ChatsController < ApplicationController
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
-    @chats = @room.chats.page(params[:page]).per(100)
+    @chats = @room.chats.page(params[:page]).per(50)
      @chat = Chat.new(room_id: @room.id)
   end
 
