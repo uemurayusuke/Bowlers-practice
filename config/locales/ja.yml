@@ -54,6 +54,11 @@ ja:
           attributes:
             caption:
               blank: "投稿内容を入力してください"
+        chat:
+          attributes:
+            message:
+             blank: "メッセージを入力してください"
+
 
   date:
     abbr_day_names:

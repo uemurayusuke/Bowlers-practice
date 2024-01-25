@@ -20,14 +20,17 @@ class Public::ChatsController < ApplicationController
      @chat = Chat.new(room_id: @room.id)
   end
 
+
   def create
-    @chat = current_user.chats.new(chat_params)
-   @chat.save
-   @room = Room.find(@chat.room_id)
-  @chats = @room.chats
+  @chat = current_user.chats.new(chat_params)
 
-
+  if @chat.save
+    @room = Room.find(@chat.room_id)
+    @chats = @room.chats
     render 'create.js.erb'
+  else
+    render :validater
+  end
   end
 
 
