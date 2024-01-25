@@ -1,4 +1,6 @@
 ja:
+  models:
+    Chat: "hoge"
   views:
     pagination:
       first: "&laquo; 最初"
@@ -57,7 +59,7 @@ ja:
         chat:
           attributes:
             message:
-             blank: "メッセージを入力してください"
+              blank: "メッセージを入力してください"
 
 
   date:
