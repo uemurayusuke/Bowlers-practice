@@ -14,7 +14,7 @@
   </div>
 
   <div class="col-1">
-  <%= link_to(@post.user) do %>
+  <%= link_to admin_user_path(@post.user) do %>
     <%= image_tag @post.user.get_profile_image(50,50)%>
   <% end %>
   </div>
@@ -23,11 +23,15 @@
   <%= @post.user.user_name %>
   </div>
 
-  <div class='col-1'>
+  <div class='col-2'>
+
   <% @post.tags.each do |tag| %>
-    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+  <%= link_to search_path(content: tag.name, model:"tag", method: "perfect"), class: "btn btn-outline-dark" do %>
+   <%= tag.name %>
+  <% end %>
   <% end %>
   </div>
+
 
   <div class='col-2'>
   <%= link_to "投稿削除", admin_post_path(@post), method: :delete, class: "btn btn-danger" %>
@@ -95,7 +99,9 @@
   <table>
     <tr>
     <td>
-    <%= image_tag post_comment.user.get_profile_image(50,50) %>
+      <%= link_to admin_user_path(post_comment.user) do %>
+    <%= image_tag post_comment.user.get_profile_image(50,50)%>
+  <% end %>
     <%= post_comment.user.user_name %>
     </td>
     </tr>
