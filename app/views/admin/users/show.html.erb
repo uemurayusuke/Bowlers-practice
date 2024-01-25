@@ -57,7 +57,9 @@
   </div>
 
   <div class="col-3">
-<%= link_to "投稿を全削除", destroy_posts_path, class: "btn btn-danger" %>
+<%= link_to admin_posts_destroy_all_path, method: :delete, class: "btn btn-danger" do %>
+投稿を全削除
+<% end %>
 </div>
 
 </div>

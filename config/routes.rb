@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
 #管理者側
 namespace :admin do
+  delete "posts/destroy_all"
   get '/search', to: 'searches#search'
   resources :users, only:[:index, :show, :edit, :update] do
   get 'followings' => 'relationships#followings', as: 'followings'

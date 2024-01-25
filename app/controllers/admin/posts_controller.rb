@@ -20,8 +20,19 @@ class Admin::PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
     flash[:alert] = "投稿が削除されました"
-    redirect_to admin_posts_path
+     redirect_to request.referer
   end
+
+
+
+def destroy_all
+    posts = Post.where(user_id: params[:id])
+    posts.destroy_all
+    flash[:alert] = "投稿が全て削除されました"
+   redirect_to request.referer
+end
+
+
 
   private
 
