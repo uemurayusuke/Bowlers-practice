@@ -91,13 +91,6 @@
 <% end %>
 </div>
 
-
-
-
-
-
-
-
 <% elsif @model == 'comment' %>
 <div class="container mt-5">
 
@@ -108,55 +101,7 @@
 </div>
 	<% if @records.present? %>
 
-
-
-
-
-
-
-
-	<table class="table mt-3">
-  <tr>
-    <th class="col-1"></th>
-    <th class="col-2">ユーザー名</th>
-    <th class="col-2">コメントした投稿</th>
-    <th class="col-2">コメント</th>
-    <th class="col-1">日時</th>
-    <th class="col-2"></th>
-  </tr>
-<% @records.each do |post_comment| %>
-  <tr>
-    <td class="col-1">
-    <%= link_to admin_user_path(post_comment.user_id) do %>
-     <%= image_tag @users.find(post_comment.user_id).get_profile_image(50,50) %>
-    <% end %>
-    </td>
-    <td class="col-2"><%= @users.find(post_comment.user_id).user_name %></td>
-    <td class="col-2"><%= post_comment.post.caption %></td>
-    <td class="col-2"><%= post_comment.comment %></td>
-    <td class="col-1"><%= post_comment.created_at.strftime('%Y/%m/%d') %></td>
-    <td class="col-2">
-    <%= link_to "投稿詳細", admin_post_path(post_comment.post), class: "btn btn-secondary",'data-turbolinks': false %>
-    <%= link_to '削除', admin_post_comment_path(post_comment), method: :delete,class: "btn btn-danger" %>
-    </td>
-  </tr>
-<% end %>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div><%= render "admin/post_comments/index", post_comments: @records %></div>
 
 
 	<% else %>
@@ -173,11 +118,5 @@
 
 <% end %>
 </div>
-
-
-
-
-
-
 
 <% end %>
