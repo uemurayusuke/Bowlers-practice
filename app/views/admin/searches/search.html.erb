@@ -29,210 +29,66 @@
 </div>
 
 
-
-
-
-
 <% elsif @model == 'post' %>
 <div class="container mt-5">
-	<h3>投稿検索結果 "<%= @content %>"</h3>
+
+  <div class="row">
+   <div class="col-2">
+  </div>
+	<h3 class="text-under-line">投稿検索結果 "<%= @content %>"</h3>
+	</div>
+
+
+	<% if @records.present? %>
+
   <div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <% @records.each do |post| %>
-      <div class="row mt-4">
-  <div class="col-2">
-  </div>
-  <div class="col-1">
-  <%= link_to(post.user) do %>
-    <%= image_tag post.user.get_profile_image(50,50)%>
-    <% end %>
-  </div>
-  <div class='col-1'>
-  <%= post.user.user_name %>
-  </div>
-  <div class='col-1'>
-  <% post.tags.each do |tag| %>
-    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
-  <% end %>
-  </div>
-  <div class='col-2'>
-  <%= link_to "投稿詳細", post_path(post), class: "btn btn-secondary",'data-turbolinks': false %>
-  </div>
+<%= render "admin/posts/index", posts: @records %>
 </div>
+<% else %>
+<div class="row mt-4">
 
-<div class="row">
   <div class="col-3">
   </div>
-  <div class='col-2'>
-  <%= post.created_at.strftime('%Y/%m/%d') %>
-  </div>
+
+  <div class="col-6 text-center">
+<h5>"<%= @content %>"の投稿はありません</h5>
 </div>
 
-
-<div class="row">
-  <div class="col-3">
-  </div>
-  <div class='col-7'>
-   <%= post.caption %>
-  </div>
+</div>
 </div>
 
-<div class="row">
-  <div class="col-3">
-  </div>
-  <div class='col-7'>
-  <% if post.post_image.attached? %>
-  <%= image_tag post.get_post_image(400,400) %>
-  <% else %>
-  <% end %>
-  </div>
-</div>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 <% elsif @model == 'post' || @model == 'tag' %>
 <div class="container mt-5">
 
-	<h3>タグ検索結果 "<%= @content %>"</h3>
-
-
-
-
-
-
-
-
-
-
-
-
-    <% @records.each do |post| %>
-  <div class="row mt-4">
-
-  <div class="col-2">
-  </div>
-
-  <div class="col-1">
-  <%= link_to(post.user) do %>
-    <%= image_tag post.user.get_profile_image(50,50)%>
-    <% end %>
-  </div>
-
-  <div class='col-1'>
-  <%= post.user.user_name %>
-  </div>
-
-  <div class='col-1'>
-  <% post.tags.each do |tag| %>
-    <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
-  <% end %>
-  </div>
-
-  <div class='col-2'>
-  <%= link_to "投稿詳細", post_path(post), class: "btn btn-secondary" %>
-  </div>
-</div>
 
 
 <div class="row">
-  <div class="col-3">
+   <div class="col-2">
   </div>
-
-  <div class='col-2'>
-  <%= post.created_at.strftime('%Y/%m/%d') %>
-  </div>
+	<h3 class="text-under-line">タグ検索結果 "<%= @content %>"</h3>
 </div>
+	<% if @records.present? %>
+
+	<div><%= render "admin/posts/index", posts: @records %></div>
 
 
-<div class="row">
+	<% else %>
+<div class="row mt-4">
 
   <div class="col-3">
   </div>
 
-  <div class='col-7'>
-   <%= post.caption %>
-  </div>
+  <div class="col-6 text-center">
+<h5>"<%= @content %>"のタグはありません</h5>
+</div>
 
 </div>
 
-<div class="row">
-
-  <div class="col-3">
-  </div>
-
-  <div class='col-7'>
-  <% if post.post_image.attached? %>
-  <%= image_tag post.get_post_image(400,400) %>
-  <% else %>
-  <% end %>
-  </div>
-
-</div>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </div>
