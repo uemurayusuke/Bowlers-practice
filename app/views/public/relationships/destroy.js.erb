@@ -1,6 +1,12 @@
-$('#follow-<%=@user.id%>').html("<%= j(render 'public/shared/follow_btn',  user: @user) %>")
+<!--ユーザー一覧に関する記述-->
+$('#follow-<%=@user.id%>').html("<%= j(render 'public/shared/follow_btn',  user: @user ) %>")
+$('#follow-chat-<%=@user.id%>').html("<%= j(render 'public/shared/follow_chat_btn',  user: @user ) %>")
 
+
+<!--フォロー数とフォロワー数に関する記述-->
 $('#followers-counter-<%=@user.id%>').html("<%= j(render 'public/relationships/followers_counter', user: @user) %>")
 $('#followings-counter-<%=@user.id%>').html("<%= j(render 'public/relationships/followings_counter', user: @user) %>")
 
+
+<!--ユーザー詳細のフォローリストとフォロワーリストに関する記述-->
 $('#follow-btn-<%=@user.id%>').html("<%= j(render 'public/relationships/follow_btn', user: @user) %>")

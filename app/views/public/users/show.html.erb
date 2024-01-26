@@ -14,8 +14,8 @@
 
 
 <% if current_user != @user%>
-<td id="follow-<%=@user.id %>">
-  <%= render "public/shared/follow_btn", user: @user %>
+<td id="follow-chat-<%=@user.id %>">
+  <%= render "public/shared/follow_chat_btn", user: @user %>
 </td>
 <% end %>
 
