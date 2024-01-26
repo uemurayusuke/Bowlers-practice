@@ -72,3 +72,9 @@
   flex-diretion: row;
 
 }
+
+
+.block-line {
+  border-bottom: 2px solid rgba(128, 128, 128, 0.2); /* 下線の色を黒で透明度0.5に指定 */
+  padding-bottom: 20px; /* 下線とコンテンツの間隔を調整（必要に応じて調整） */
+}
