@@ -10,7 +10,7 @@
      <%= form_with model: @user, url:user_path do |f| %>
 
 
-     <%= render "public/shared/error_messages", resource: @user %>
+     <%= render "layouts/errors", obj: @user %>
 
 
 

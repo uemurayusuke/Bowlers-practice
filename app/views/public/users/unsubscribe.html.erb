@@ -1,15 +1,16 @@
-<div class="form-row d-flex justify-content-center my-4">
-<h5 class="text-under-line">
-  本当に退会しますか？
-  </h5>
+<div class="form-row d-flex justify-content-center mt-5 mb-3">
+<h4>
+  <strong class="text-under-line">本当に退会しますか？</strong>
+  </h4>
 </div>
 
 <h5 class="d-flex justify-content-center text-center">
-  退会すると、マイページや投稿が閲覧できなくなります。<br/>
-  退会する場合は、「退会する」をクリックしてください。
+  <span class="text-under-line-red">
+    退会すると、マイページや投稿が閲覧できなくなります
+  </span>
 </h5>
 
-<div class="form-row d-flex justify-content-center my-4">
+<div class="form-row d-flex justify-content-center mt-5">
 <span class="col-2 text-right pr-3">
   <%= link_to withdraw_users_path, method: :patch, class: "btn btn-danger" do %>
 退会する

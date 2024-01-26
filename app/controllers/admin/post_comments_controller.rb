@@ -2,7 +2,7 @@ class Admin::PostCommentsController < ApplicationController
    before_action :authenticate_admin!
 
   def index
-    @post_comments = PostComment.page(params[:page]).per(10)
+    @post_comments = PostComment.page(params[:page]).per(5)
     @users = User.all
   end
 
