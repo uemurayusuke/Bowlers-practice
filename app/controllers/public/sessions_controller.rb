@@ -28,7 +28,8 @@ def user_state
   if user.is_active
     return unless user.valid_password?(params[:user][:password])
   else
-    redirect_to  new_user_registration_path, alert: "会員情報がありません。新規登録をしてください。"
+    flash[:alert] = "会員情報がありません。新規登録をしてください。"
+    redirect_to  new_user_registration_path
   end
 end
 

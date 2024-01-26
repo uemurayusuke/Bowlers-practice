@@ -6,8 +6,34 @@
 	  </span>
 	 </h3>
 
+<% if @records.present? %>
 	<%= render "admin/users/index", users: @records %>
  </div>
+
+<% else %>
+<div class="row mt-4">
+
+  <div class="col-3">
+  </div>
+
+  <div class="col-6 text-center">
+<h5>
+  <span class="text-under-line-blue">
+   "<%= @content %>"というユーザーはいません
+  </span>
+</h5>
+</div>
+</div>
+
+<% end %>
+
+
+
+
+
+
+
+
 
 
 <% elsif @model == 'post' %>

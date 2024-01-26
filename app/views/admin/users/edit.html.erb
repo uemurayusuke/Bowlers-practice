@@ -11,7 +11,7 @@
 </div>
      <%= form_with model: @user, url:admin_user_path do |f| %>
 
-     <%= render "public/shared/error_messages", resource: @user %>
+     <%= render "layouts/errors", obj: @user %>
      <div class="form-row mt-3">
         <span class="form-group col-3"><%= f.label :会員id %></span>
         <div class="form-group col-3">
