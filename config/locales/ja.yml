@@ -2,6 +2,8 @@ ja:
   models:
     Chat: "メッセージ送信時"
     PostComment: "コメント送信時"
+    User: "新規登録時"
+    Post: "投稿時"
   views:
     pagination:
       first: "&laquo; 最初"

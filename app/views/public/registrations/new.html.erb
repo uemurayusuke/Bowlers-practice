@@ -1,12 +1,25 @@
 <div class="container mt-5">
   <div class="row main-row">
     <div class="col-12">
-     <h4 class="col-4 text-under-line">新規会員登録</h4>
+      <div class="form-row mt-4">
+        <span class="form-group col-1"></span>
+       <h4 class="form-group col-3 ">
+       <span class="text-under-line">
+       新規会員登録
+       </span>
+      </h4>
+       </div>
      <%= form_with model: @user, url: user_registration_path do |f| %>
 
-     <%= render "public/shared/error_messages", resource: resource %>
+     <div class="form-row">
+        <span class="form-group col-1"></span>
+        <span class="form-group col-11">
+          <%= render "layouts/errors", obj: resource %>
+        </span>
 
+</div>
       <div class="form-row">
+        <span class="form-group col-1"></span>
        <span class="form-group col-3 pt-4">名前</span>
         <div class="form-group col-3">
          <label for="last_name">(姓)</label>
@@ -19,6 +32,7 @@
       </div>
 
       <div class="form-row">
+        <span class="form-group col-1"></span>
         <span class="form-group col-3 pt-4">フリガナ</span>
         <div class="form-group col-3">
           <label for="last_name_kana">(セイ)</label>
@@ -32,6 +46,7 @@
 
 
       <div class="form-row">
+        <span class="form-group col-1"></span>
         <span class="form-group col-3">ユーザー名</span>
         <div class="form-group col-3">
          <%= f.text_field :user_name, class: "form-control" %>
@@ -41,6 +56,7 @@
 
 
       <div class="form-row">
+        <span class="form-group col-1"></span>
         <span class="form-group col-3">メールアドレス</span>
         <div class="form-group col-6">
           <%= f.text_field :email, class: "form-control" %>
@@ -48,6 +64,7 @@
       </div>
 
       <div class="form-row">
+        <span class="form-group col-1"></span>
         <span class="form-group col-3">パスワード(6文字以上)</span>
         <div class="form-group col-3">
          <%= f.password_field :password, class: "form-control" %>
@@ -55,6 +72,7 @@
       </div>
 
       <div class="form-row">
+        <span class="form-group col-1"></span>
         <span class="form-group col-3">パスワード(確認用)</span>
         <div class="form-group col-3">
          <%= f.password_field :password_confirmation, class: "form-control" %>
@@ -62,6 +80,7 @@
       </div>
 
       <div class="actions form-group justify-content:center; d-flex">
+        <span class="form-group col-1"></span>
         <span class="form-group col-3"></span>
         <%= f.submit "新規登録",class: "btn btn-success col-4 " %>
       </div>
@@ -70,11 +89,14 @@
 
 
       <div class="actions form-group justify-content:center; d-flex">
+        <span class="form-group col-1"></span>
          <span class="form-group col-3"></span>
+
       <%= link_to "ログインはこちら", new_session_path(resource_name),class: "btn btn-primary  col-4" %>
       </div>
 
       <div class="actions form-group justify-content:center; d-flex">
+        <span class="form-group col-1"></span>
          <span class="form-group col-3"></span>
       <%= link_to "トップに戻る", root_path,class: "btn btn-secondary col-4" %>
       </div>

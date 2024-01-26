@@ -1,6 +1,10 @@
 <% if @model == 'user' %>
   <div class="container mt-5">
-	<h3 class="text-under-line">ユーザー検索結果 "<%= @content %>"</h3>
+	<h3>
+	  <span class="text-under-line">
+	  ユーザー検索結果 "<%= @content %>"
+	  </span>
+	 </h3>
 
 	<%= render "admin/users/index", users: @records %>
  </div>
@@ -51,7 +55,11 @@
 <div class="row">
    <div class="col-2">
   </div>
-	<h3 class="text-under-line">タグ検索結果 "<%= @content %>"</h3>
+	<h3>
+	  <span class="text-under-line">
+	  タグ検索結果 "<%= @content %>"
+	  </span>
+	 </h3>
 </div>
 	<% if @records.present? %>
 
@@ -84,7 +92,11 @@
 
 
 <div class="row">
-	<h3 class="text-under-line">コメント検索結果 "<%= @content %>"</h3>
+	<h3>
+	  <span class="text-under-line">
+	  コメント検索結果 "<%= @content %>"
+	  </span>
+	 </h3>
 </div>
 	<% if @records.present? %>
 
