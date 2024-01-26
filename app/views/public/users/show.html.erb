@@ -58,6 +58,8 @@
 
 
   <% if @posts.present? %>
+
+<% if current_user == @user%>
 <div class="row mt-4">
   <div class="col-3">
   </div>
@@ -65,6 +67,7 @@
 <%= link_to "投稿を全削除", destroy_all_posts_path, class: "btn btn-danger" %>
 </div>
 </div>
+<% end %>
 
 <%= render "public/posts/posts_index", posts: @posts %>
 

@@ -51,6 +51,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    @can_delete = user_signed_in? && current_user == @post.user
   end
 
   private

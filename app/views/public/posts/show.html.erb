@@ -27,13 +27,13 @@
   <% end %>
   </div>
 
-  <div class='col-2'>
-  <%= link_to "投稿詳細", post_path(@post), class: "btn btn-secondary" %>
-  </div>
 
+<% if @can_delete %> <!-- ユーザーがログインしており、かつ投稿の所有者である場合 -->
   <div class='col-2'>
   <%= link_to "投稿削除", post_path(@post), method: :delete, class: "btn btn-danger",'data-turbolinks': false %>
   </div>
+<% end %>
+
 
 
 </div>
@@ -87,25 +87,8 @@
     <%= render "public/shared/favorites_btn", post: @post %>
  </div>
  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  </div>
 </div>
-
-
-
 
  <div class="row mt-2">
   <div class="col-3">
