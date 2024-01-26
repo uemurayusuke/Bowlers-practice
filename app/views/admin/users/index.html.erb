@@ -5,9 +5,28 @@
   </span>
 </h3>
 
+<% if @users.present? %>
 
 <%= render "admin/users/index", users: @users %>
 
+<% else %>
+
+<div class="row mt-4">
+
+  <div class="col-3">
+  </div>
+
+  <div class="col-6 text-center">
+<h5>
+  <span class="text-under-line-blue">
+   ユーザーはいません
+  </span>
+
+</h5>
+</div>
+
+</div>
+<% end %>
 
 </div>
 
