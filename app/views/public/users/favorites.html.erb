@@ -22,7 +22,7 @@
  </div>
 </div>
 <%= render "public/posts/posts_index", posts: @favorite_posts %>
- </div>
+
 
 
 
@@ -34,8 +34,26 @@
 
 
 <% else %>
-  <p>いいねした投稿はありません</p>
+
+
+<div class="row mt-4">
+  <div class="col-3">
+  </div>
+  <div class="col-6 text-center">
+<h5>いいねした投稿はありません</h5>
+</div>
+
+</div>
+
+
+
+
+
+
+
 <% end %>
+
+</div>
 
 
 <div class="row mx-auto justify-content-center">
