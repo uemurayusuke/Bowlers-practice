@@ -12,6 +12,5 @@
 <% end %>
 </div>
 
-<div class="row mx-auto justify-content-center">
-     <%= paginate @users %>
-</div>
+<%= render "public/shared/paginate", obj: @users %>
+

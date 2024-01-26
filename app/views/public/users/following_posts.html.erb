@@ -64,6 +64,4 @@
 <% end %>
 </div>
 
- <div class="row mx-auto justify-content-center">
-     <%= paginate @posts %>
-</div>
+<%= render "public/shared/paginate", obj:  @posts %>
