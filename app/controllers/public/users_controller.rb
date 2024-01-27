@@ -15,15 +15,14 @@ class Public::UsersController < ApplicationController
     @user = current_user
   end
 
-
   def update
-     @user = current_user
-     if @user.update(user_params)
+    @user = current_user
+    if @user.update(user_params)
       flash[:notice] = "編集が完了しました"
       redirect_to user_path(@user)
-     else
+    else
       render "edit"
-     end
+    end
   end
 
   def unsubscribe
@@ -43,30 +42,25 @@ class Public::UsersController < ApplicationController
     favorite_posts = Post.where(id: favorites)
 
     if params[:latest]
-       @favorite_posts = favorite_posts.latest.page(params[:page])
+      @favorite_posts = favorite_posts.latest.page(params[:page])
     elsif params[:old]
-       @favorite_posts = favorite_posts.old.page(params[:page])
+      @favorite_posts = favorite_posts.old.page(params[:page])
     else
-       @favorite_posts = favorite_posts.page(params[:page])
+      @favorite_posts = favorite_posts.page(params[:page])
     end
-
   end
-
 
   def following_posts
-   posts = Post.where(user_id: [*current_user.following_ids]).page(params[:page])
+    posts = Post.where(user_id: [*current_user.following_ids]).page(params[:page])
+
     if params[:latest]
-       @posts = posts.latest.page(params[:page])
+      @posts = posts.latest.page(params[:page])
     elsif params[:old]
-       @posts = posts.old.page(params[:page])
+      @posts = posts.old.page(params[:page])
     else
-       @posts = posts.page(params[:page])
+      @posts = posts.page(params[:page])
     end
   end
-
-
-
-
 
   private
 
@@ -77,8 +71,9 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.guest_user?
-      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-
 end
+
+# 整理完了

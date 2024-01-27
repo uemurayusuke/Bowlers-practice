@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+
   def new
     @post = Post.new
   end
@@ -7,18 +8,16 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-   tag_list = params[:post][:tag_name].split(',')
+    tag_list = params[:post][:tag_name].split(',')
 
-  if @post.save
-     @post.save_tags(tag_list)
-     flash[:notice] = "投稿が完了しました"
-    redirect_to user_path(current_user)
-  else
-    render :new
+    if @post.save
+      @post.save_tags(tag_list)
+      flash[:notice] = "投稿が完了しました"
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
-  end
-
-
 
   def index
     if params[:latest]
@@ -47,7 +46,6 @@ class Public::PostsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
@@ -59,5 +57,6 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:caption, :post_image)
   end
-
 end
+
+# 整理完了

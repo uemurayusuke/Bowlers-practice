@@ -7,7 +7,6 @@ class Public::ChatsController < ApplicationController
     rooms = current_user.user_rooms.pluck(:room_id)
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
 
-
     unless user_rooms.nil?
       @room = user_rooms.room
     else
@@ -17,24 +16,23 @@ class Public::ChatsController < ApplicationController
       UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
     @chats = @room.chats.page(params[:page]).per(50)
-     @chat = Chat.new(room_id: @room.id)
+    @chat = Chat.new(room_id: @room.id)
   end
-
 
   def create
-  @chat = current_user.chats.new(chat_params)
+    @chat = current_user.chats.new(chat_params)
 
-  if @chat.save
-    @room = Room.find(@chat.room_id)
-    @chats = @room.chats
-    render 'create.js.erb'
-  else
-    render :validater
+    if @chat.save
+      @room = Room.find(@chat.room_id)
+      @chats = @room.chats
+      render 'create.js.erb'
+    else
+      render :validater
+    end
   end
-  end
-
 
   private
+
   def chat_params
     params.require(:chat).permit(:message, :room_id)
   end
@@ -43,8 +41,8 @@ class Public::ChatsController < ApplicationController
     user = User.find(params[:id])
     unless current_user.following?(user) && user.following?(current_user)
       redirect_to posts_path
-      #とりあえず投稿一覧にリダイレクト
     end
   end
-
 end
+
+# 整理完了

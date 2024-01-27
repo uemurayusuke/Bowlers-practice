@@ -1,6 +1,4 @@
 class Admin::SessionsController < Devise::SessionsController
-
-
   def after_sign_in_path_for(resource)
     flash.clear
     flash[:notice] = "ログインしました！"
@@ -12,5 +10,6 @@ class Admin::SessionsController < Devise::SessionsController
     flash[:alert] = "ログアウトしました"
     admin_session_path
   end
-
 end
+
+# 整理完了

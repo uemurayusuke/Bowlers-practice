@@ -6,15 +6,14 @@ class Public::FavoritesController < ApplicationController
     @favorite = current_user.favorites.new(post_id: post.id)
     @favorite.save
     render 'replace_favorites_btn.js.erb'
-
   end
 
   def destroy
     post = Post.find(params[:post_id])
     @favorite = current_user.favorites.find_by(post_id: post.id)
     @favorite.destroy
-     render 'replace_favorites_btn.js.erb'
-
+    render 'replace_favorites_btn.js.erb'
   end
-
 end
+
+# 整理完了

@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-   before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def index
     if params[:latest]
@@ -20,24 +20,21 @@ class Admin::PostsController < ApplicationController
     post = Post.find(params[:id])
     post.destroy
     flash[:alert] = "投稿が削除されました"
-     redirect_to admin_user_path(post.user)
+    redirect_to admin_user_path(post.user)
   end
 
-
-
-def destroy_all
+  def destroy_all
     posts = Post.where(user_id: params[:id])
     posts.destroy_all
     flash[:alert] = "投稿が全て削除されました"
-   redirect_to request.referer
-end
-
-
+    redirect_to request.referer
+  end
 
   private
 
   def post_params
     params.require(:post).permit(:caption, :post_image)
   end
-
 end
+
+# 整理完了
