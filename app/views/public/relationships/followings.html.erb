@@ -1,25 +1,23 @@
 <div class="container mt-5">
 
   <h3>
-  <span class="text-under-line">フォローリスト</span>
-</h3>
+    <span class="text-under-line">フォローリスト</span>
+  </h3>
 
+  <% if @users.exists? %>
+    <div><%= render "public/users/index", users: @users %></div>
+  <% else %>
 
-<% if @users.exists? %>
-<div><%= render "public/users/index", users: @users %></div>
+    <h5 class="mt-4 text-center">
+      <span class="text-under-line-blue">
+        フォローしているユーザーはいません
+      </span>
+    </h5>
 
-<% else %>
+  <% end %>
 
-
-<h5 class="mt-4 text-center">
-  <span class="text-under-line-blue">
- フォローしているユーザーはいません
-  </span>
-</h5>
-
-
-<% end %>
 </div>
 
 <%= render "public/shared/paginate", obj:  @users %>
 
+<!--整理完了-->

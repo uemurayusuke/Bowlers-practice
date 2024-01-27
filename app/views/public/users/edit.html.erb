@@ -2,49 +2,48 @@
   <div class="row main-row">
     <div class="col-12">
 
-<div class="form-row mt-4">
-     <h4 class="form-group col-4 text-under-line">
-         <%= @user.last_name+@user.first_name %>さんのユーザー情報編集
-      </h4>
-</div>
-     <%= form_with model: @user, url:user_path do |f| %>
+      <div class="form-row mt-4">
+        <h4 class="form-group col-4 text-under-line">
+          <%= @user.last_name + @user.first_name %>さんのユーザー情報編集
+        </h4>
+      </div>
 
+      <%= form_with model: @user, url: user_path do |f| %>
+        <%= render "layouts/errors", obj: @user %>
 
-     <%= render "layouts/errors", obj: @user %>
-
-
-
-<div class="form-row mt-1">
-        <span class="form-group col-3">ユーザー名</span>
-        <div class="form-group col-3">
-         <%= f.text_field :user_name, class: "form-control" %>
+        <div class="form-row mt-1">
+          <span class="form-group col-3">ユーザー名</span>
+          <div class="form-group col-3">
+            <%= f.text_field :user_name, class: "form-control" %>
+          </div>
         </div>
-      </div>
 
-      <div class="form-row">
-        <span class="form-group col-3"><%= f.label :プロフィール画像 %></span>
-        <div class="form-group col-3">
-         <%= f.file_field :profile_image, accept: "image/*" %>
+        <div class="form-row">
+          <span class="form-group col-3"><%= f.label :プロフィール画像 %></span>
+          <div class="form-group col-3">
+            <%= f.file_field :profile_image, accept: "image/*" %>
+          </div>
         </div>
-      </div>
 
-<div class="form-row">
-        <span class="form-group col-3"><%= f.label :自己紹介文 %></span>
-        <div class="form-group col-6">
-         <%= f.text_area :introduction, class: "form-control",rows: 4 %>
+        <div class="form-row">
+          <span class="form-group col-3"><%= f.label :自己紹介文 %></span>
+          <div class="form-group col-6">
+            <%= f.text_area :introduction, class: "form-control", rows: 4 %>
+          </div>
         </div>
-      </div>
 
-      <div class="actions form-group justify-content:center; d-flex mb-5">
-        <span class="form-group col-3"></span>
-        <%= f.submit "変更内容を保存",class: "btn btn-success col-3" %>
-</div>
+        <div class="actions form-group justify-content:center; d-flex mb-5">
+          <span class="form-group col-3"></span>
+          <%= f.submit "変更内容を保存", class: "btn btn-success col-3" %>
+        </div>
 
-      <div class="actions form-group justify-content:center; d-flex mt-5">
-      <span class="form-group col-3"></span>
-      <%= link_to "退会する", unsubscribe_users_path, class: "btn btn-danger col-2"  %>
-      </div>
+        <div class="actions form-group justify-content:center; d-flex mt-5">
+          <span class="form-group col-3"></span>
+          <%= link_to "退会する", unsubscribe_users_path, class: "btn btn-danger col-2" %>
+        </div>
       <% end %>
+    </div>
   </div>
 </div>
-</div>
+
+<!--整理完了-->

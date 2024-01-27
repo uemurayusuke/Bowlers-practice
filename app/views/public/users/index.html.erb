@@ -1,12 +1,13 @@
 <div class="container mt-5">
+  <h3>
+    <span class="text-under-line">ユーザーリスト</span>
+  </h3>
 
-<h3>
-  <span class="text-under-line">ユーザーリスト</span>
-</h3>
-
-<div><%= render "public/users/index", users: @users %></div>
-
+  <div>
+    <%= render "public/users/index", users: @users %>
+  </div>
 </div>
 
 <%= render "public/shared/paginate", obj: @users %>
 
+<!--整理完了-->

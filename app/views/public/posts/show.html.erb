@@ -1,134 +1,112 @@
 <div class="container mt-5 ">
   <div class="row">
-  <div class="col-2">
-  </div>
-<h3 class="text-under-line">投稿詳細</h3>
-</div>
-
-<div class="row mt-4">
-  <div class="col-2">
+    <div class="col-2">
+    </div>
+    <h3 class="text-under-line">投稿詳細</h3>
   </div>
 
-  <div class="col-1">
-  <%= link_to(@post.user) do %>
-    <%= image_tag @post.user.get_profile_image(50,50)%>
-  <% end %>
+  <div class="row mt-4">
+    <div class="col-2">
+    </div>
+
+    <div class="col-1">
+      <%= link_to(@post.user) do %>
+        <%= image_tag @post.user.get_profile_image(50,50) %>
+      <% end %>
+    </div>
+
+    <div class='col-1'>
+      <%= @post.user.user_name %>
+    </div>
+
+    <div class='col-2'>
+      <% @post.tags.each do |tag| %>
+        <%= link_to search_path(content: tag.name, model: "tag", method: "perfect"), class: "btn btn-outline-dark" do %>
+          <%= tag.name %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% if @can_delete %> <!-- ユーザーがログインしており、かつ投稿の所有者である場合 -->
+      <div class='col-2'>
+        <%= link_to "投稿削除", post_path(@post), method: :delete, class: "btn btn-danger", 'data-turbolinks': false %>
+      </div>
+    <% end %>
   </div>
 
-  <div class='col-1'>
-  <%= @post.user.user_name %>
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class='col-2'>
+      <%= @post.created_at.strftime('%Y/%m/%d') %>
+    </div>
   </div>
 
-  <div class='col-2'>
-  <% @post.tags.each do |tag| %>
-    <%= link_to search_path(content: tag.name, model:"tag", method: "perfect"), class: "btn btn-outline-dark" do %>
-   <%= tag.name %>
-  <% end %>
-  <% end %>
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class='col-7'>
+      <%= @post.caption %>
+    </div>
   </div>
 
-
-<% if @can_delete %> <!-- ユーザーがログインしており、かつ投稿の所有者である場合 -->
-  <div class='col-2'>
-  <%= link_to "投稿削除", post_path(@post), method: :delete, class: "btn btn-danger",'data-turbolinks': false %>
-  </div>
-<% end %>
-
-
-
-</div>
-
-
-<div class="row">
-
-  <div class="col-3">
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class='col-7'>
+      <% if @post.post_image.attached? %>
+        <%= image_tag @post.get_post_image(600,600) %>
+      <% else %>
+      <% end %>
+    </div>
   </div>
 
-  <div class='col-2'>
-  <%= @post.created_at.strftime('%Y/%m/%d') %>
+  <div class="row mt-2">
+    <div class="col-3">
+    </div>
+    <div class="col-3">
+      <div class=<%= "favorite-" + @post.id.to_s %>>
+        <%= render "public/shared/favorites_btn", post: @post %>
+      </div>
+    </div>
   </div>
-
-</div>
-
-
-<div class="row">
-
-  <div class="col-3">
-  </div>
-
-  <div class='col-7'>
-   <%= @post.caption %>
-  </div>
-
-</div>
-
-
-<div class="row">
-
-  <div class="col-3">
-  </div>
-
-  <div class='col-7'>
-  <% if @post.post_image.attached? %>
-  <%= image_tag @post.get_post_image(600,600) %>
-  <% else %>
-  <% end %>
-  </div>
-
 </div>
 
 <div class="row mt-2">
   <div class="col-3">
   </div>
-
- <div class="col-3">
-   <div class=<%= "favorite-" + @post.id.to_s %>>
-
-    <%= render "public/shared/favorites_btn", post: @post %>
- </div>
- </div>
- </div>
-</div>
-
- <div class="row mt-2">
-  <div class="col-3">
-  </div>
-
   <div class="col post-comments-index">
-<%= render "public/post_comments/index", post: @post %>
+    <%= render "public/post_comments/index", post: @post %>
+  </div>
 </div>
-</div>
-
 
 <div class="row mt-2">
   <div class="col-3">
   </div>
-
-<div class="errors">
-  <%= render "layouts/errors", obj: @post_comment %>
+  <div class="errors">
+    <%= render "layouts/errors", obj: @post_comment %>
+  </div>
 </div>
-</div>
-
-
 
 <div class="row mt-2">
   <div class="col-3">
   </div>
   <div class="col">
     <table>
-  <%= form_with model: [@post, @post_comment], local: false do |f| %>
-  <tr>
-    <div class="form-row">
-        <div class="form-group col-8">
-         <%= f.text_area :comment, class: "form-control comment-textarea",rows: 4 %>
-        </div>
-      </div>
-    </tr>
-    <tr>
-    <td><%= f.submit "送信する", class: "btn btn-primary" %></td>
-    </tr>
-  <% end %>
-  </table>
+      <%= form_with model: [@post, @post_comment], local: false do |f| %>
+        <tr>
+          <div class="form-row">
+            <div class="form-group col-8">
+              <%= f.text_area :comment, class: "form-control comment-textarea", rows: 4 %>
+            </div>
+          </div>
+        </tr>
+        <tr>
+          <td><%= f.submit "送信する", class: "btn btn-primary" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
-</div>
-</div>
+
+<!--整理完了-->

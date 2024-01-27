@@ -6,39 +6,32 @@
     <th class="col-2">フォロー数</th>
     <th class="col-2">フォロワー数</th>
     <th class="col-5"></th>
-
   </tr>
   <% users.each do |user| %>
-  <tr>
-   <td class="col-1">
-     <%= link_to user_path(user) do %>
-     <%= image_tag user.get_profile_image(50,50) %>
-     <% end %>
-   </td>
-    <td class="col-2"><%= user.user_name %></td>
-    <td class="col-1">投稿数:<%= user.posts.count %></td>
-
-
-    <td class="col-2" id="followings-counter-<%=user.id %>">
+    <tr>
+      <td class="col-1">
+        <%= link_to user_path(user) do %>
+          <%= image_tag user.get_profile_image(50, 50) %>
+        <% end %>
+      </td>
+      <td class="col-2"><%= user.user_name %></td>
+      <td class="col-1">投稿数:<%= user.posts.count %></td>
+      <td class="col-2" id="followings-counter-<%=user.id %>">
         <%= render "public/relationships/followings_counter", user: user %>
-    </td>
-    <td class="col-2" id="followers-counter-<%=user.id %>">
+      </td>
+      <td class="col-2" id="followers-counter-<%=user.id %>">
         <%= render "public/relationships/followers_counter", user: user %>
-    </td>
-
-
-
-
-    <td class="col-5" >
-      <div class="d-flex justify-content-between align-items-center">
-        <div id="follow-<%=user.id %>">
-    <%= render "public/shared/follow_btn", user: user %>
- </div>
- 　<span class="pr-4"><%= link_to "ユーザー詳細", user_path(user), class: "btn btn-secondary" %></span>
-  </div>
-    </td>
-
-</tr>
-
-<% end %>
+      </td>
+      <td class="col-5" >
+        <div class="d-flex justify-content-between align-items-center">
+          <div id="follow-<%=user.id %>">
+            <%= render "public/shared/follow_btn", user: user %>
+          </div>
+          <span class="pr-4"><%= link_to "ユーザー詳細", user_path(user), class: "btn btn-secondary" %></span>
+        </div>
+      </td>
+    </tr>
+  <% end %>
 </table>
+
+<!--整理完了-->

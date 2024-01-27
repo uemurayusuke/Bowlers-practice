@@ -1,92 +1,73 @@
 <div class="container mt-5">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-3">
+      <%= image_tag @user.get_profile_image(200,200) %>
+    </div>
+    <div class="col-6">
+      <table class="table mt-3">
+        <tr>
+          <td><%= @user.user_name %></td>
 
-<div class="row">
-  <div class="col-2">
+          <% if current_user != @user %>
+            <td id="follow-chat-<%=@user.id %>">
+              <%= render "public/shared/follow_chat_btn", user: @user %>
+            </td>
+          <% end %>
+
+          <% if current_user == @user %>
+            <% unless @user.guest_user? %>
+              <td>
+                <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %>
+                <%= link_to "いいね投稿リスト", favorites_user_path(current_user), class: "btn btn-primary" %>
+              </td>
+            <% else %>
+              <td>
+                <%= link_to "いいね投稿リスト", favorites_user_path(current_user), class: "btn btn-primary" %>
+              </td>
+            <% end %>
+          <% end %>
+        </tr>
+
+        <tr>
+          <td>投稿<%= @user.posts.count %>件</td>
+          <td id="follow-btn-<%=@user.id %>">
+            <%= render "public/relationships/follow_btn", user: @user %>
+          </td>
+        </tr>
+
+        <tr>
+          <td><%= @user.introduction %></td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="col-3">
-<%= image_tag @user.get_profile_image(200,200) %>
-</div>
-
-  <div class="col-6">
-<table class="table mt-3 ">
-<tr>
-<td><%= @user.user_name %></td>
-
-
-<% if current_user != @user%>
-<td id="follow-chat-<%=@user.id %>">
-  <%= render "public/shared/follow_chat_btn", user: @user %>
-</td>
-<% end %>
-
-
-<% if current_user == @user%>
-
-<% unless @user.guest_user? %>
-  　<td>
-    <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %>
-    <%= link_to "いいね投稿リスト", favorites_user_path(current_user), class: "btn btn-primary" %>
-    </td>
-<% else %>
-
-<td>
-    <%= link_to "いいね投稿リスト", favorites_user_path(current_user), class: "btn btn-primary" %>
-    </td>
-<% end %>
-
-<% end %>
-</tr>
-
-<tr>
-  <td>投稿<%= @user.posts.count %>件</td>
-  <td  id="follow-btn-<%=@user.id %>">
-    <%= render "public/relationships/follow_btn", user: @user %>
-</td>
-</tr>
-
-<tr>
-<td><%= @user.introduction %></td>
-</tr>
-</table>
-</div>
-</div>
-
-
-
-
-
-
 
   <% if @posts.present? %>
+    <% if current_user == @user %>
+      <div class="row mt-4">
+        <div class="col-3"></div>
+        <div class="col-3">
+          <%= link_to "投稿を全削除", destroy_posts_path, class: "btn btn-danger" %>
+        </div>
+      </div>
+    <% end %>
 
-<% if current_user == @user%>
-<div class="row mt-4">
-  <div class="col-3">
-  </div>
-  <div class="col-3">
-<%= link_to "投稿を全削除", destroy_posts_path, class: "btn btn-danger" %>
-</div>
-</div>
-<% end %>
-
-<%= render "public/posts/posts_index", posts: @posts %>
-
-<% else %>
-<div class="row mt-4">
-  <div class="col-3">
-  </div>
-  <div class="col-6 text-center">
-<h5>
-  <span class="text-under-line-blue">
-  <%= @user.user_name %>さんの投稿はありません
-  </span>
-</h5>
-</div>
-
-</div>
-
-<% end %>
+    <%= render "public/posts/posts_index", posts: @posts %>
+  <% else %>
+    <div class="row mt-4">
+      <div class="col-3"></div>
+      <div class="col-6 text-center">
+        <h5>
+          <span class="text-under-line-blue">
+            <%= @user.user_name %>さんの投稿はありません
+          </span>
+        </h5>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <%= render "public/shared/paginate", obj: @posts %>
 
+<!--整理完了-->
