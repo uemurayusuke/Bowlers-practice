@@ -1,91 +1,84 @@
 <div class="container mt-5">
 
-<div class="row">
-  <div class="col-2">
+  <div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-3">
+      <%= image_tag @user.get_profile_image(200, 200) %>
+    </div>
+
+    <div class="col-6">
+      <table class="table mt-3">
+        <tr>
+          <td><%= @user.user_name %></td>
+          <td><%= link_to "プロフィール編集", edit_admin_user_path(@user), class: "btn btn-success" %></td>
+        </tr>
+
+        <tr>
+          <td><%= @user.last_name %> <%= @user.first_name %></td>
+        </tr>
+
+        <tr>
+          <td><%= @user.last_name_kana %> <%= @user.first_name %></td>
+        </tr>
+
+        <tr>
+          <td><%= @user.email %></td>
+        </tr>
+
+        <tr>
+          <td>投稿<%= @user.posts.count %>件</td>
+          <td>
+            <%= link_to admin_user_followings_path(@user), class: "btn btn-outline-primary" do %>
+              フォロー中<%= @user.followings.count %>人
+            <% end %>
+            <span class="pl-1">
+              <%= link_to admin_user_followers_path(@user), class: "btn btn-outline-primary" do %>
+                フォロワー<%= @user.followers.count %>人
+              <% end %>
+            </span>
+          </td>
+        </tr>
+
+        <tr>
+          <td><%= @user.introduction %></td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="col-3">
-<%= image_tag @user.get_profile_image(200,200) %>
 </div>
 
-<div class="col-6">
-<table class="table mt-3 ">
-<tr>
-<td><%= @user.user_name %></td>
-<td><%= link_to "プロフィール編集", edit_admin_user_path(@user), class: "btn btn-success" %></td>
-</tr>
-
-<tr>
-<td><%= @user.last_name %> <%= @user.first_name %></td>
-</tr>
-
-<tr>
-<td><%= @user.last_name_kana %> <%= @user.first_name %></td>
-</tr>
-
-<tr>
-<td><%= @user.email %></td>
-</tr>
-
-<tr>
-  <td>投稿<%= @user.posts.count %>件</td>
-  <td>
-  <%= link_to admin_user_followings_path(@user), class: "btn btn-outline-primary" do %>
-フォロー中<%= @user.followings.count %>人
-<% end %>
-<span class="pl-1">
-  <%= link_to admin_user_followers_path(@user), class: "btn btn-outline-primary" do %>
-フォロワー<%= @user.followers.count %>人
-<% end %>
-</span>
-</td>
-</tr>
-
-<tr>
-<td><%= @user.introduction %></td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-
-
-<div class="container mt-5 ">
+<div class="container mt-5">
   <% if @posts.present? %>
-<div class="row">
+    <div class="row">
+      <div class="col-3">
+      </div>
 
-  <div class="col-3">
-  </div>
+      <div class="col-3">
+        <%= link_to admin_posts_destroy_all_path(id: @user.id), method: :delete, class: "btn btn-danger", data: { confirm: "本当に全削除しますか？" } do %>
+          投稿を全削除
+        <% end %>
+      </div>
+    </div>
 
-  <div class="col-3">
-<%= link_to admin_posts_destroy_all_path(id: @user.id), method: :delete, class: "btn btn-danger", data: { confirm: "本当に全削除しますか？" } do %>
-投稿を全削除
-<% end %>
-</div>
+    <%= render "admin/posts/index", posts: @posts %>
 
-</div>
+  <% else %>
+    <div class="row mt-4">
+      <div class="col-3">
+      </div>
 
-<%= render "admin/posts/index", posts: @posts %>
-
-<% else %>
-
-<div class="row mt-4">
-
-  <div class="col-3">
-  </div>
-
-  <div class="col-6 text-center">
-<h5>
-  <span class="text-under-line-blue">
-   <%= @user.user_name %>さんの投稿はありません
-  </span>
-
-</h5>
-</div>
-
-</div>
-
-<% end %>
+      <div class="col-6 text-center">
+        <h5>
+          <span class="text-under-line-blue">
+            <%= @user.user_name %>さんの投稿はありません
+          </span>
+        </h5>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <%= render "public/shared/paginate", obj: @posts %>
 
+<!--整理完了-->

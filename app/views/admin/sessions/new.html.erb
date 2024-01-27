@@ -1,51 +1,49 @@
 <div>
-<% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-<% end %>
+  <% flash.each do |message_type, message| %>
+    <div class="flash-message <%= message_type %>"><%= message %></div>
+  <% end %>
 </div>
 
 <div class="container mt-5">
   <div class="row main-row">
     <div class="col-12">
 
-<div class="form-row">
-     <h2 class="form-group mx-auto">
-         <div class="fa-solid fa-bowling-ball"></div>
+      <div class="form-row">
+        <h2 class="form-group mx-auto">
+          <div class="fa-solid fa-bowling-ball"></div>
           Bowlers
-      </h2>
-   </div>
+        </h2>
+      </div>
 
-<div class="form-row">
-     <h5 class="form-group mx-auto text-under-line">
+      <div class="form-row">
+        <h5 class="form-group mx-auto text-under-line">
           管理者ログイン
-      </h5>
-</div>
+        </h5>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-      <div class="form-row">
-        <div class="form-group col-3 mx-auto">
-          <label for="email"><%= f.label :メールアドレス %></label>
-          <%= f.text_field :email, class: "form-control"%>
-</div>
-</div>
-
-
-      <div class="form-row">
-         <div class="form-group col-3 mx-auto">
-          <label for="first_name_kana"><%= f.label :パスワード%></label>
-          <%= f.text_field :password, class: "form-control"%>
-        </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-row">
+          <div class="form-group col-3 mx-auto">
+            <label for="email"><%= f.label :メールアドレス %></label>
+            <%= f.text_field :email, class: "form-control"%>
+          </div>
         </div>
 
-<div class="form-row">
-<div class="form-group col-3 mx-auto">
-        <%= f.submit "ログイン",class: "btn btn-primary col-12" %>
-      </div>
-      </div>
+        <div class="form-row">
+          <div class="form-group col-3 mx-auto">
+            <label for="first_name_kana"><%= f.label :パスワード%></label>
+            <%= f.text_field :password, class: "form-control"%>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-3 mx-auto">
+            <%= f.submit "ログイン", class: "btn btn-primary col-12" %>
+          </div>
+        </div>
       <% end %>
+    </div>
+  </div>
+</div>
 
-
-
-
-
+<!--整理完了-->

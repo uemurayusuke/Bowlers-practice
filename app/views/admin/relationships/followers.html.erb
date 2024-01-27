@@ -1,16 +1,16 @@
 <div class="container mt-5">
-<h3>
-  <span class="text-under-line">フォロワーリスト</span>
-</h3>
+  <h3>
+    <span class="text-under-line">フォロワーリスト</span>
+  </h3>
 
-<% if @users.exists? %>
-
-<%= render "admin/users/index", users: @users %>
-
-<% else %>
-  <p>フォローしているユーザーはいません</p>
-<% end %>
+  <% if @users.exists? %>
+    <%= render "admin/users/index", users: @users %>
+  <% else %>
+    <p>フォローしているユーザーはいません</p>
+  <% end %>
 </div>
 
 <%= render "public/shared/paginate", obj: @users %>
+
+<!--整理完了-->
 

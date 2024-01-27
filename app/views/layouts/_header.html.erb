@@ -2,90 +2,87 @@
   <nav class="navbar navbar-expand-lg navbar-dark header-bg">
     <div class="container">
       <h3>
-       <%= link_to root_path,class: 'nav-link text-light' do %>
-        <i class="fa-solid fa-bowling-ball"></i>
-        Bowlers
-      <% end %>
+        <%= link_to root_path, class: 'nav-link text-light' do %>
+          <i class="fa-solid fa-bowling-ball"></i>
+          Bowlers
+        <% end %>
       </h3>
 
       <% if user_signed_in? %>
-      <span class="nav-link text-light">
-        <%= current_user.user_name %> さんがログインしています
-      </span>
+        <span class="nav-link text-light">
+          <%= current_user.user_name %> さんがログインしています
+        </span>
       <% elsif admin_signed_in? %>
-      <span class="nav-link text-light">
-        管理者でログインしています
-      </span>
-<% end %>
-
+        <span class="nav-link text-light">
+          管理者でログインしています
+        </span>
+      <% end %>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
         <ul class="navbar-nav ml-auto">
 
-        <% if user_signed_in? %>
+          <% if user_signed_in? %>
 
-          <li>
-            <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> マイページ
-            <% end %>
-          </li>
+            <li>
+              <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
+                <i class="fas fa-home"></i> マイページ
+              <% end %>
+            </li>
 
-          <li>
-            <%=  link_to users_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> ユーザーリスト
-            <% end %>
-          </li>
+            <li>
+              <%= link_to users_path, class: 'nav-link text-light' do %>
+                <i class="fas fa-users"></i> ユーザーリスト
+              <% end %>
+            </li>
 
-          <li>
-            <%=  link_to posts_path ,class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-rectangle-list"></i> 投稿リスト
-            <% end %>
-          </li>
+            <li>
+              <%= link_to posts_path, class: 'nav-link text-light' do %>
+                <i class="fa-solid fa-rectangle-list"></i> 投稿リスト
+              <% end %>
+            </li>
 
-          <li>
-            <%=  link_to new_post_path ,class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-plus"></i> 新規投稿
-            <% end %>
-          </li>
+            <li>
+              <%= link_to new_post_path, class: 'nav-link text-light' do %>
+                <i class="fa-solid fa-plus"></i> 新規投稿
+              <% end %>
+            </li>
 
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
-            <% end %>
-          </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
 
+          <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to admin_users_path, class: 'nav-link text-light' do %>
+                <i class="fas fa-users"></i> ユーザーリスト
+              <% end %>
+            </li>
 
+            <li>
+              <%= link_to admin_posts_path, class: 'nav-link text-light' do %>
+                <i class="fa-solid fa-rectangle-list"></i> 投稿リスト
+              <% end %>
+            </li>
 
-        <% elsif admin_signed_in? %>
-          <li>
-            <%=  link_to admin_users_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> ユーザーリスト
-            <% end %>
-          </li>
+            <li>
+              <%= link_to admin_post_comments_path, class: 'nav-link text-light' do %>
+                <i class="fa-solid fa-comment-dots"></i>コメントリスト
+              <% end %>
+            </li>
 
-          <li>
-            <%=  link_to admin_posts_path ,class: 'nav-link text-light' do %>
-             <i class="fa-solid fa-rectangle-list"></i> 投稿リスト
-            <% end %>
-          </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
 
-          <li>
-            <%=  link_to admin_post_comments_path ,class: 'nav-link text-light' do %>
-             <i class="fa-solid fa-comment-dots"></i>コメントリスト
-            <% end %>
-          </li>
+          <% end %>
 
-         <li>
-            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
-            <% end %>
-          </li>
-
-        <% end %>
         </ul>
       </div>
     </div>
@@ -93,11 +90,10 @@
 </header>
 
 <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
+  <div class="flash-message <%= message_type %>"><%= message %></div>
 <% end %>
 
 <div class="form-row mt-3">
- <div class="col"></div>
- <div class="col-4"><%= render 'public/searches/form' %></div>
+  <div class="col"></div>
+  <div class="col-4"><%= render 'public/searches/form' %></div>
 </div>
-

@@ -9,27 +9,29 @@
     <th class="col-2"></th>
   </tr>
 
-<% users.each do |user| %>
- <tr>
-   <td class="col-1">
-     <%= link_to admin_user_path(user) do %>
-     <%= image_tag user.get_profile_image(50,50) %>
-     <% end %>
-   </td>
-    <td class="col-2"><%= user.user_name %></td>
-    <td class="col-1">投稿数:<%= user.posts.count %></td>
-    <td class="col-2">フォロー数: <%= user.followings.count %></td>
-    <td class="col-2">フォロワー数: <%= user.followers.count %></td>
-    <td class="col-2">
-      <% if user.is_active == true %>
-         <span style="color: #1a8066;">会員</span>
-         <% else %>
-         <span class="text-danger">退会済</span>
-         <% end %>
-    </td>
-    <td class="col-2">
-      <%= link_to "ユーザー詳細", admin_user_path(user), class: "btn btn-secondary",'data-turbolinks': false %>
-    </td>
-</tr>
-<% end %>
+  <% users.each do |user| %>
+    <tr>
+      <td class="col-1">
+        <%= link_to admin_user_path(user) do %>
+          <%= image_tag user.get_profile_image(50, 50) %>
+        <% end %>
+      </td>
+      <td class="col-2"><%= user.user_name %></td>
+      <td class="col-1">投稿数: <%= user.posts.count %></td>
+      <td class="col-2">フォロー数: <%= user.followings.count %></td>
+      <td class="col-2">フォロワー数: <%= user.followers.count %></td>
+      <td class="col-2">
+        <% if user.is_active == true %>
+          <span style="color: #1a8066;">会員</span>
+        <% else %>
+          <span class="text-danger">退会済</span>
+        <% end %>
+      </td>
+      <td class="col-2">
+        <%= link_to "ユーザー詳細", admin_user_path(user), class: "btn btn-secondary", 'data-turbolinks': false %>
+      </td>
+    </tr>
+  <% end %>
 </table>
+
+<!--整理完了-->

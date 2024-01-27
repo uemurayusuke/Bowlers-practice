@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bowlers</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
+<head>
+  <title>Bowlers</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css">
-    <!--→これを適用させると画面がおかしくなる-->
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://kit.fontawesome.com/1043f0fa51.js" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.7/js/bootstrap.min.js"></script>
-  </head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css">
+  <!-- これを適用させると画面がおかしくなる -->
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="https://kit.fontawesome.com/1043f0fa51.js" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.7/js/bootstrap.min.js"></script>
+</head>
 
+<body>
+  <% if user_signed_in? || admin_signed_in? %>
+    <%= render 'layouts/header' %>
+  <% end %>
 
-<% if user_signed_in? %>
-   <%= render 'layouts/header' %>
-<% elsif admin_signed_in? %>
-   <%= render 'layouts/header' %>
-<% end %>
+  <!-- 元々の記述 -->
+  <%= yield %>
 
-
-<!--元々の記述-->
-  <body>
-    <%= yield %>
-  </body>
-
- <%= render 'layouts/footer' %>
+  <%= render 'layouts/footer' %>
+</body>
 
 </html>
+
+<!--整理完了-->
