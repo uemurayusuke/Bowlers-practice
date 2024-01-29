@@ -32,3 +32,10 @@ $(function(){
 $(function(){
   setTimeout("$('.alert').fadeOut('slow')", 1000);
 });
+
+import Raty from "raty.js"
+window.raty = function(elem,opt) {
+  let raty =  new Raty(elem,opt)
+  raty.init();
+  return raty;
+}
