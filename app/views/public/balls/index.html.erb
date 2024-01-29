@@ -1,2 +1,98 @@
-<h1>Public::Balls#index</h1>
-<p>Find me in app/views/public/balls/index.html.erb</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-2">
+    </div>
+    <h3 class="text-under-line">ボールレビューリスト</h3>
+  </div>
+
+  <% if @balls.present? %>
+
+    <% @balls.each do |ball| %>
+  <div class="row mt-4">
+    <div class="col-3"></div>
+
+    <div class="col-1">
+      <%= link_to(ball.user) do %>
+        <%= image_tag ball.user.get_profile_image(50, 50) %>
+      <% end %>
+    </div>
+
+    <div class='col-1'>
+      <%= ball.user.user_name %>
+    </div>
+
+    <div class='col-2'>
+      <%= link_to "ボールレビュー詳細", ball_path(ball), class: "btn btn-secondary", 'data-turbolinks': false %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class='col-7'>
+      メーカー:<%= ball.maker %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class='col-7'>
+      ボール名:<%= ball.name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class='col-7'>
+      <%= ball.caption %>
+    </div>
+  </div>
+
+   <div class="row">
+    <div class="col-3"></div>
+    <div class='col-7'>
+      <% if ball.ball_image.attached? %>
+        <%= image_tag ball.get_ball_image(400, 400) %>
+      <% else %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <!--レビューの星-->
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class='col-2'>
+      <%= ball.created_at.strftime('%Y/%m/%d %H:%M') %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 block-line"></div>
+  </div>
+<% end %>
+
+<!--整理完了-->
+
+  <% else %>
+    <div class="row mt-4">
+      <div class="col-3">
+      </div>
+      <div class="col-6 text-center">
+        <h5>
+          <span class="text-under-line-blue">
+            投稿はありません
+          </span>
+        </h5>
+      </div>
+    </div>
+  <% end %>
+
+  <%= render "public/shared/paginate", obj: @balls %>
+</div>

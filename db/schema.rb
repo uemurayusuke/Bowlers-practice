@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2024_01_29_024405) do
   end
 
   create_table "balls", force: :cascade do |t|
-    t.integer "maker"
-    t.integer "name", null: false
+    t.string "maker"
+    t.string "name", null: false
     t.text "caption", null: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

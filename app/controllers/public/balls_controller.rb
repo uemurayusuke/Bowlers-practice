@@ -1,8 +1,8 @@
 class Public::BallsController < ApplicationController
-  def index
-  end
 
-
+def index
+  @balls = Ball.page(params[:page])
+end
 
 def new
     @ball = Ball.new
@@ -29,7 +29,7 @@ end
 private
 
   def ball_params
-    params.require(:ball).permit(:maker, :name, :caption)
+    params.require(:ball).permit(:maker, :name, :caption, :ball_image)
   end
 
 end

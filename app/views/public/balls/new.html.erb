@@ -20,19 +20,19 @@
 
       <%= form_with model: @ball, url: balls_path do |f| %>
 
-        <div class="form-row">
-          <div class="form-group col-1"></div>
-          <span class="form-group col-2"><%= f.label :ボール名 %></span>
-          <div class="form-group col-3">
-            <%= f.text_field :ball_name, class: "form-control" %>
-          </div>
-        </div>
-
         <div class="form-row mt-3">
           <div class="form-group col-1"></div>
           <span class="form-group col-2"><%= f.label :メーカー名 %></span>
           <div class="form-group col-3">
             <%= f.text_field :maker, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-1"></div>
+          <span class="form-group col-2"><%= f.label :ボール名 %></span>
+          <div class="form-group col-3">
+            <%= f.text_field :name, class: "form-control" %>
           </div>
         </div>
 
