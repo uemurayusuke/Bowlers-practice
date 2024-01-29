@@ -20,7 +20,7 @@ Post.find_or_create_by!(caption: "投げに来ました！") do |post|
   end
 
 
-5.times do |n|
+3.times do |n|
   User.create!(
     last_name: "試験#{n + 1}",
     first_name: "太郎#{n + 1}",
@@ -30,7 +30,7 @@ Post.find_or_create_by!(caption: "投げに来ました！") do |post|
     user_name: "taro#{n + 1}",
     introduction: "よろしく#{n + 1}",
     password: "123456",
-    is_active: true  # 修正: true は文字列ではなく、真偽値として設定
+    is_active: true
   )
 end
 

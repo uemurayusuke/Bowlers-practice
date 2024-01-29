@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'balls/index'
+    get 'balls/new'
+    get 'balls/show'
+    get 'balls/destroy'
+    get 'balls/create'
+  end
   # ユーザー認証関係
   devise_scope :user do
     root to: 'homes#top'
