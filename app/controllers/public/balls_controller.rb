@@ -29,7 +29,7 @@ end
 private
 
   def ball_params
-    params.require(:ball).permit(:maker, :name, :caption, :ball_image)
+    params.require(:ball).permit(:maker, :name, :caption, :ball_image, :rate)
   end
 
 end

@@ -26,6 +26,29 @@
     </div>
   </div>
 
+<div class="row">
+    <div class="col-3"></div>
+    <div class='col-7'>
+      <span id="rate_<%= ball.id %>"></span>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#rate_<%= ball.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "<%= ball.rate %>",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-3"></div>
     <div class='col-7'>

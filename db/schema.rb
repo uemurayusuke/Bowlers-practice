@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2024_01_29_024405) do
     t.string "maker"
     t.string "name", null: false
     t.text "caption", null: false
+    t.float "rate", null: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
