@@ -21,7 +21,7 @@
       <%= ball.user.user_name %>
     </div>
 
-    <div class='col-2'>
+    <div class='col-3'>
       <%= link_to "ボールレビュー詳細", ball_path(ball), class: "btn btn-secondary", 'data-turbolinks': false %>
     </div>
   </div>
@@ -29,14 +29,27 @@
   <div class="row">
     <div class="col-3"></div>
     <div class='col-7'>
+      <span class="review-under-line">
       メーカー:<%= ball.maker %>
+      </span>
     </div>
   </div>
 
   <div class="row">
     <div class="col-3"></div>
     <div class='col-7'>
+        <span class="review-under-line">
       ボール名:<%= ball.name %>
+       </span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class='col-7'>
+        <span class="review-under-line">
+      レビュー内容
+       </span>
     </div>
   </div>
 
@@ -87,7 +100,7 @@
       <div class="col-6 text-center">
         <h5>
           <span class="text-under-line-blue">
-            投稿はありません
+            ボールレビューはありません
           </span>
         </h5>
       </div>
