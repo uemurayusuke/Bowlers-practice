@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'balls/index'
-    get 'balls/new'
-    get 'balls/show'
-    get 'balls/destroy'
-    get 'balls/create'
-  end
+
   # ユーザー認証関係
   devise_scope :user do
     root to: 'homes#top'
@@ -63,7 +57,8 @@ Rails.application.routes.draw do
     end
     get '/search', to: 'searches#search'
     resources :chats, only: [:show, :create]
+    resources :balls, only: [:new, :create, :index, :show, :destroy]
   end
-end
+  end
 
 # 整理完了

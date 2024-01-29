@@ -59,4 +59,8 @@ class Public::PostsController < ApplicationController
   end
 end
 
+
+
+
+
 # 整理完了
