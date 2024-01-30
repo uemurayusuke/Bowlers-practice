@@ -28,7 +28,7 @@
   <div class="row">
     <div class="col-3"></div>
     <div class='col-2'>
-      <%= post.created_at.strftime('%Y/%m/%d %H:%M') %>
+     <%= post.created_at.in_time_zone('Asia/Tokyo').strftime('%Y/%m/%d %H:%M') %>
     </div>
   </div>
 
