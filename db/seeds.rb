@@ -15,10 +15,9 @@ Post.find_or_create_by!(caption: "投げに来ました！") do |post|
   post.user = hitosi
 
   # タグの追加
-    tag = Tag.find_or_create_by(name: "ボウリング")
-    post.tags << tag
-  end
-
+  tag = Tag.find_or_create_by(name: "ボウリング")
+  post.tags << tag
+end
 
 3.times do |n|
   User.create!(
@@ -35,8 +34,7 @@ Post.find_or_create_by!(caption: "投げに来ました！") do |post|
 end
 
 Admin.create!(
-  email: "bowlers@gmail.com",
-  password: "bowlers202311"
+  email: ENV['admin_email'],
+  password: ENV['admin_password']
 )
-
 
