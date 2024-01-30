@@ -1,7 +1,7 @@
 class Public::BallsController < ApplicationController
 
 def index
-  @balls = Ball.page(params[:page])
+  @balls = Ball.all.order(params[:sort]).page(params[:page]).per(5)
 end
 
 def new
