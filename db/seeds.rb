@@ -1,11 +1,11 @@
-hitosi = User.find_or_create_by!(email: "hitosi@test.com") do |user|
+hitosi = User.find_or_create_by!(email: ENV['hitosi_email']) do |user|
   user.last_name = "滝川"
   user.first_name = "仁"
   user.last_name_kana = "タキガワ"
   user.first_name_kana = "ヒトシ"
   user.user_name = "hitosi"
   user.introduction = "よろしく"
-  user.password = "hitosi"
+  user.password = ENV['hitosi_pass']
   user.is_active = true
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/profile_image/bowling_user_boy1.jpg"), filename: "bowling_user_boy1.jpg")
 end
