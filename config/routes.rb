@@ -57,7 +57,6 @@ Rails.application.routes.draw do
     end
     get '/search', to: 'searches#search'
     resources :chats, only: [:show, :create]
-    resources :balls, only: [:new, :create, :index, :show, :destroy]
   end
   end
 
