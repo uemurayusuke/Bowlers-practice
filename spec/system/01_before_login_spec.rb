@@ -3,20 +3,18 @@ require 'rails_helper'
 describe '[STEP1] ユーザログイン前のテスト' do
 
   describe 'ユーザ新規登録のテスト' do
-    before do
-      visit new_user_registration_path
-    end
 
     context '新規登録成功のテスト' do
       before do
-        fill_in 'user[user_name]', with: Faker::Lorem.characters(number: 10)
-        fill_in 'user[email]', with: Faker::Internet.email
-        fill_in 'user[last_name]', with: Faker::Lorem.characters(number: 5)
-        fill_in 'user[first_name]', with: Faker::Lorem.characters(number: 5)
-        fill_in 'user[last_name_kana]', with: Faker::Lorem.characters(number: 5)
-        fill_in 'user[first_name_kana]', with: Faker::Lorem.characters(number: 5)
-        fill_in 'user[password]', with: 'password'
-        fill_in 'user[password_confirmation]', with: 'password'
+        visit new_user_registration_path
+        fill_in 'user[ユーザー名]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[メールアドレス]', with: Faker::Internet.email
+        fill_in 'user[(姓)]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[(名)]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[(セイ)]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[(メイ)]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[パスワード(6文字以上)]', with: 'password'
+        fill_in 'user[パスワード(確認用)]', with: 'password'
       end
 
       it '正しく新規登録される' do
