@@ -4,17 +4,17 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
   describe 'ユーザ新規登録のテスト' do
 
-    context '新規登録成功のテスト' do
+context '新規登録成功のテスト' do
       before do
         visit new_user_registration_path
-        fill_in 'ユーザー名', with: Faker::Lorem.characters(number: 5)
-        fill_in 'メールアドレス', with: Faker::Internet.email
-        fill_in '(姓)', with: Faker::Lorem.characters(number: 5)
-        fill_in '(名)', with: Faker::Lorem.characters(number: 5)
-        fill_in '(セイ)', with: Faker::Lorem.characters(number: 5)
-        fill_in '(メイ)', with: Faker::Lorem.characters(number: 5)
-        fill_in 'パスワード(6文字以上)', with: 'password'
-        fill_in 'パスワード(確認用)', with: 'password'
+        fill_in 'user[user_name]', with: Faker::Lorem.characters(number: 1)
+        fill_in 'user[email]', with: Faker::Internet.email
+        fill_in 'user[last_name]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[first_name]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[last_name_kana]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[first_name_kana]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'user[password]', with: 'password'
+        fill_in 'user[password_confirmation]', with: 'password'
       end
 
       it '正しく新規登録される' do
@@ -26,7 +26,10 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(current_path).to eq '/users/' + User.last.id.to_s
       end
     end
+
   end
+
+
 
 
 
@@ -53,7 +56,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
 
     context 'ログイン失敗のテスト' do
       before do
-        fill_in 'user[name]', with: ''
+        fill_in 'user[email]', with: ''
         fill_in 'user[password]', with: ''
         click_button 'ログイン'
       end
