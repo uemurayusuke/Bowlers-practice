@@ -1,10 +1,8 @@
 require 'rails_helper'
 
 describe '[STEP1] ユーザログイン前のテスト' do
-
   describe 'ユーザ新規登録のテスト' do
-
-context '新規登録成功のテスト' do
+    context '新規登録成功のテスト' do
       before do
         visit new_user_registration_path
         fill_in 'user[user_name]', with: Faker::Lorem.characters(number: 1)
@@ -26,14 +24,7 @@ context '新規登録成功のテスト' do
         expect(current_path).to eq '/users/' + User.last.id.to_s
       end
     end
-
   end
-
-
-
-
-
-
 
   describe 'ユーザログイン' do
     let(:user) { create(:user) }
@@ -67,8 +58,6 @@ context '新規登録成功のテスト' do
     end
   end
 
-
-
   describe 'ユーザログアウトのテスト' do
     let(:user) { create(:user) }
 
@@ -82,7 +71,6 @@ context '新規登録成功のテスト' do
       logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link logout_link
     end
-
 
     context 'ログアウト機能のテスト' do
       it 'ログアウト後のリダイレクト先が、トップになっている' do
