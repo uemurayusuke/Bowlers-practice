@@ -80,6 +80,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       click_link logout_link
     end
 
+
     context 'ログアウト機能のテスト' do
       it 'ログアウト後のリダイレクト先が、トップになっている' do
         expect(current_path).to eq '/'
