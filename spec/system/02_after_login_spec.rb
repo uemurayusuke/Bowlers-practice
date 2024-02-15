@@ -2,9 +2,6 @@ require 'rails_helper'
 
 describe '[STEP2] ユーザログイン後のテスト' do
   let(:user) { create(:user) }
-  let!(:other_user) { create(:user) }
-  let!(:post) { create(:post, user: user) }
-  let!(:other_post) { create(:post, user: other_user) }
 
   before do
     visit new_user_session_path
@@ -12,6 +9,8 @@ describe '[STEP2] ユーザログイン後のテスト' do
     fill_in 'user[password]', with: user.password
     click_button 'ログイン'
   end
+
+
 
   describe '新規投稿画面のテスト' do
     before do
@@ -35,6 +34,12 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
     end
   end
+
+
+
+
+
+
 
   describe '自分のユーザ情報編集画面のテスト' do
     before do
