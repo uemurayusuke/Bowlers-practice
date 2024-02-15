@@ -52,7 +52,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
         @user_old_user_name = user.user_name
         @user_old_introduction = user.introduction
         @user_old_profile_image = user.profile_image
-        attach_file('post[post_image]', Rails.root.join('spec', 'images', 'profile_image.jpg'))
+        attach_file('user[profile_image]', Rails.root.join('spec', 'images', 'test1.jpg'))
         fill_in 'user[user_name]', with: Faker::Lorem.characters(number: 5)
         fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 10)
         click_button '変更内容を保存'
