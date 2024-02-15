@@ -35,22 +35,6 @@ describe '[STEP2] ユーザログイン後のテスト' do
     end
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    describe '自分のユーザ情報編集画面のテスト' do
     before do
       visit edit_user_path(user)
@@ -60,15 +44,23 @@ describe '[STEP2] ユーザログイン後のテスト' do
       before do
         @user_old_user_name = user.user_name
         @user_old_introduction = user.introduction
+        @user_old_profile_image = user.profile_image
+         attach_file('post[post_image]', Rails.root.join('spec', 'images', 'profile_image.jpeg'))
         fill_in 'user[user_name]', with: Faker::Lorem.characters(number: 5)
         fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 10)
         click_button '変更内容を保存'
       end
 
-      it 'nameが正しく更新される' do
+
+
+      it 'プロフィール画像が正しく更新される' do
+        expect(user.reload.profile_image).not_to eq @user_old_profile_image
+      end
+
+      it 'ユーザー名が正しく更新される' do
         expect(user.reload.user_name).not_to eq @user_old_name
       end
-      it 'introductionが正しく更新される' do
+      it '自己紹介文が正しく更新される' do
         expect(user.reload.introduction).not_to eq @user_old_intrpduction
       end
       it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
