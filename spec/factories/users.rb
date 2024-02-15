@@ -12,7 +12,7 @@ FactoryBot.define do
 
 
     after(:build) do |user|
-      user.profile_image.attach(io: File.open('spec/images/profile_image.jpeg'), filename: 'profile_image.jpeg', content_type: 'image/jpeg')
+      user.profile_image.attach(io: File.open('spec/images/profile_image.jpg'), filename: 'profile_image.jpg', content_type: 'image/jpg')
     end
   end
 end

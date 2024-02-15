@@ -3,6 +3,7 @@ require 'rails_helper'
 describe '[STEP2] ユーザログイン後のテスト' do
   let(:user) { create(:user) }
 
+
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
@@ -19,7 +20,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
 
     context '投稿成功のテスト' do
       before do
-        attach_file('post[post_image]', Rails.root.join('spec', 'images', 'profile_image.jpeg'))
+        attach_file('post[post_image]', Rails.root.join('spec', 'images', 'profile_image.jpg'))
         fill_in 'post[caption]', with: Faker::Lorem.characters(number: 20)
         fill_in 'post[tag_name]', with: Faker::Lorem.characters(number: 5)
       end
@@ -30,7 +31,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
 
       it 'リダイレクト先が、投稿したユーザー詳細画面になっている' do
         click_button '投稿する'
-        expect(response).to redirect_to(user_path(user))
+        expect(page).to have_current_path(user_path(user))
       end
     end
   end
@@ -51,7 +52,7 @@ describe '[STEP2] ユーザログイン後のテスト' do
         @user_old_user_name = user.user_name
         @user_old_introduction = user.introduction
         @user_old_profile_image = user.profile_image
-        attach_file('post[post_image]', Rails.root.join('spec', 'images', 'profile_image.jpeg'))
+        attach_file('post[post_image]', Rails.root.join('spec', 'images', 'profile_image.jpg'))
         fill_in 'user[user_name]', with: Faker::Lorem.characters(number: 5)
         fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 10)
         click_button '変更内容を保存'
