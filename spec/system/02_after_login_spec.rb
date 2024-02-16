@@ -61,15 +61,15 @@ describe '[STEP2] ユーザログイン後のテスト' do
         expect(File.basename(rails_blob_path(user.reload.profile_image))).to eq 'test1.jpg'
       end
 
-      xit 'ユーザー名が正しく更新される' do
+      it 'ユーザー名が正しく更新される' do
         expect(user.reload.user_name).not_to eq @user_old_user_name
       end
 
-      xit '自己紹介文が正しく更新される' do
+      it '自己紹介文が正しく更新される' do
         expect(user.reload.introduction).not_to eq @user_old_introduction
       end
 
-      xit 'リダイレクト先が、自分のユーザ詳細画面になっている' do
+      it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
         expect(current_path).to eq '/users/' + user.id.to_s
       end
     end
