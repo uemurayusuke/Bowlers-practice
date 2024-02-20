@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   has_many :user_rooms
   has_many :chats
-  has_many :rooms, through: :user_rooms
+
 
   validates :last_name, presence: true
   validates :first_name, presence: true
