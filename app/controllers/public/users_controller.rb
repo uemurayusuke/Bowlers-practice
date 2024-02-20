@@ -3,12 +3,12 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.page(params[:page]).per(5)
+    @users = User.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.page(params[:page])
+    @posts = @user.posts.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -46,7 +46,7 @@ class Public::UsersController < ApplicationController
     elsif params[:old]
       @favorite_posts = favorite_posts.old.page(params[:page])
     else
-      @favorite_posts = favorite_posts.page(params[:page])
+      @favorite_posts = favorite_posts.page(params[:page]).order(created_at: :desc)
     end
   end
 
@@ -58,7 +58,7 @@ class Public::UsersController < ApplicationController
     elsif params[:old]
       @posts = posts.old.page(params[:page])
     else
-      @posts = posts.page(params[:page])
+      @posts = posts.page(params[:page]).order(created_at: :desc)
     end
   end
 
