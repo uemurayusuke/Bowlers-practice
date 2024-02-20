@@ -7,7 +7,7 @@ class Admin::PostsController < ApplicationController
     elsif params[:old]
       @posts = Post.old.page(params[:page])
     else
-      @posts = Post.page(params[:page])
+      @posts = Post.page(params[:page]).order(created_at: :desc)
     end
   end
 

@@ -10,7 +10,6 @@ class Tag < ApplicationRecord
     elsif method == 'partial'
       tags = Tag.where('name LIKE ?', '%' + content + '%')
     end
-
-    return tags.inject(init = []) { |result, tag| result + tag.posts }
+    return tags.map(&:posts).flatten.sort_by(&:created_at).reverse
   end
 end

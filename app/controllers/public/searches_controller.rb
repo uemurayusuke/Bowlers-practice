@@ -11,7 +11,7 @@ class Public::SearchesController < ApplicationController
     elsif @model == 'post'
       @records = Post.search_for(@content, @method).page(params[:page]).per(5).order(created_at: :desc)
     elsif @model == 'tag'
-      @records = Tag.search_posts_for(@content, @method).order(created_at: :desc).page(params[:page]).per(5)
+      @records = Kaminari.paginate_array(Tag.search_posts_for(@content, @method)).page(params[:page]).per(5)
     end
   end
 end
